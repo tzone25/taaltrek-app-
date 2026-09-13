@@ -14,10 +14,37 @@
             <div class="stats">⭐ <span id="total-stars">0</span></div>
         </header>
 
-        <!-- Home Screen -->
+        <!-- MAIN HOMEPAGE (Levels + Tabs) -->
         <div id="home-screen" class="screen active">
-            <h2>Kies 'n Les (Choose a Lesson)</h2>
-            <div id="lesson-menu"></div>
+            <div class="tab-header">
+                <button class="tab-btn active" onclick="switchTab('lessons')">📚 Lessons</button>
+                <button class="tab-btn" onclick="switchTab('games')">🎮 Games</button>
+            </div>
+
+            <!-- Lessons Tab View -->
+            <div id="lessons-tab" class="tab-content active">
+                <div class="level-section">
+                    <h3>🌱 Beginner Level</h3>
+                    <div id="beginner-menu" class="lesson-grid"></div>
+                </div>
+                <div class="level-section">
+                    <h3>🌿 Intermediate Level</h3>
+                    <div id="intermediate-menu" class="lesson-grid"></div>
+                </div>
+                <div class="level-section">
+                    <h3>🌳 Fluent Level</h3>
+                    <div id="fluent-menu" class="lesson-grid"></div>
+                </div>
+            </div>
+
+            <!-- Games Tab View -->
+            <div id="games-tab" class="tab-content">
+                <h3>Vocabulary Mini-Games</h3>
+                <div class="game-card" onclick="startMatchingGame()">
+                    <h4>⚡ Word Match Blitz</h4>
+                    <p>Race against time to match English and Afrikaans terms!</p>
+                </div>
+            </div>
         </div>
 
         <!-- Study Screen -->
@@ -33,13 +60,10 @@
             <div class="progress-bar"><div id="progress-fill"></div></div>
             <h2 id="question-text">Question</h2>
             
-            <!-- Large Play Button for Listening Exercises -->
             <button id="large-play-btn" class="hidden">🔊 Hear Word</button>
 
-            <!-- Multiple Choice UI -->
             <div id="options-container" class="interaction-area"></div>
             
-            <!-- Typing UI -->
             <div id="typing-area" class="interaction-area hidden">
                 <input type="text" id="typing-input" placeholder="Type your answer in Afrikaans..." autocomplete="off" autocorrect="off" autocapitalize="none">
                 <button id="check-typing-btn" class="primary-btn">Check Answer</button>
@@ -52,6 +76,14 @@
                 </div>
                 <button id="next-btn" class="primary-btn">Next</button>
             </div>
+        </div>
+
+        <!-- Mini-Game Screen -->
+        <div id="game-screen" class="screen">
+            <h2>Word Match Blitz ⚡</h2>
+            <p id="game-instructions">Tap the matching pairs!</p>
+            <div id="game-board"></div>
+            <button id="quit-game-btn" class="primary-btn" style="background:#e53e3e; margin-top: 15px;">Quit Game</button>
         </div>
 
         <!-- Result Screen -->
