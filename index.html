@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaalTrek - Complete Afrikaans Mastery Course</title>
+    <title>TaalTrek - Ultimate Afrikaans Mastery Course</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background: linear-gradient(135deg, #007749 0%, #001489 100%); color: #2d3748; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 10px; }
-        .app-container { width: 100%; max-width: 440px; background: #ffffff; border-radius: 24px; box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column; overflow: hidden; height: 640px; border: 3px solid #ffb81c; position: relative; }
+        .app-container { width: 100%; max-width: 480px; background: #ffffff; border-radius: 24px; box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column; overflow: hidden; height: 680px; border: 3px solid #ffb81c; position: relative; }
         #app-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: #ffffff; border-bottom: 2px solid #f0f2f5; flex-shrink: 0; }
         .logo { font-weight: 900; font-size: 1.25rem; color: #007749; }
         .stats { background: #fff8e6; border: 2px solid #ffb81c; padding: 5px 12px; border-radius: 20px; font-weight: 800; color: #b37d00; font-size: 0.9rem; }
         .screen { display: none; flex-direction: column; padding: 20px; flex: 1; overflow: hidden; background: #fafbfc; position: relative; }
         .screen.active { display: flex; }
-        .screen-scroll-content { flex: 1; overflow-y: auto; padding-bottom: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .screen-scroll-content { flex: 1; overflow-y: auto; padding-bottom: 20px; display: flex; flex-direction: column; gap: 14px; }
         .tab-header { display: flex; background: #e6f4ea; border-radius: 14px; padding: 4px; margin-bottom: 16px; border: 1.5px solid #ceead6; flex-shrink: 0; }
         .tab-btn { flex: 1; padding: 9px; border: none; background: transparent; font-weight: 700; color: #4b6b57; border-radius: 10px; cursor: pointer; font-size: 0.85rem; }
         .tab-btn.active { background: #007749; color: #ffffff; box-shadow: 0 4px 12px rgba(0, 119, 73, 0.25); }
         .tab-content { display: none; flex-direction: column; gap: 14px; }
         .tab-content.active { display: flex; }
-        .level-section h3 { font-size: 0.85rem; text-transform: uppercase; color: #007749; font-weight: 800; margin-bottom: 8px; }
+        .level-section h3 { font-size: 0.85rem; text-transform: uppercase; color: #007749; font-weight: 800; margin-bottom: 8px; margin-top: 6px; }
         .lesson-grid { display: flex; flex-direction: column; gap: 10px; }
         .lesson-card { background: #ffffff; border: 1.5px solid #e2e8f0; border-left: 6px solid #007749; padding: 14px 16px; border-radius: 12px; font-weight: 700; color: #1a202c; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; }
-        .lesson-card:hover { border-color: #007749; }
-        .game-card { background: linear-gradient(135deg, #e03c31 0%, #ffb81c 100%); color: white; padding: 20px; border-radius: 16px; cursor: pointer; }
-        .game-card h4 { margin: 0 0 4px 0; font-size: 1.1rem; font-weight: 800; }
-        .game-card p { margin: 0; font-size: 0.88rem; opacity: 0.95; }
+        .lesson-card:hover { border-color: #007749; background: #f8fafc; }
         .primary-btn { background: #007749; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; cursor: pointer; width: 100%; box-shadow: 0 4px 12px rgba(0, 119, 73, 0.25); flex-shrink: 0; }
         .primary-btn:hover { background: #005c38; }
         .back-btn { background: #edf2f7; color: #4a5568; border: 1.5px solid #cbd5e0; padding: 8px 14px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; cursor: pointer; align-self: flex-start; flex-shrink: 0; }
         .back-btn:hover { background: #e2e8f0; }
         .fixed-bottom-bar { padding-top: 10px; background: #fafbfc; border-top: 1px solid #edf2f7; flex-shrink: 0; }
         #study-screen h2, #lesson-screen h2, #result-screen h2 { font-size: 1.25rem; color: #001489; font-weight: 800; margin: 10px 0; }
+        .grammar-box { background: #eef2ff; border: 1.5px solid #c7d2fe; padding: 14px; border-radius: 12px; font-size: 0.9rem; color: #1e1b4b; line-height: 1.4; }
+        .grammar-box h4 { color: #3730a3; margin-bottom: 4px; font-weight: 800; }
         .vocab-item { background: #ffffff; border: 1.5px solid #e2e8f0; padding: 12px 14px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
         .vocab-text { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
         .vocab-afrikaans { font-weight: 800; color: #007749; font-size: 1rem; word-break: break-word; }
@@ -47,10 +46,6 @@
         #typing-input { width: 100%; padding: 14px 16px; border: 2px solid #cbd5e0; border-radius: 12px; font-size: 1rem; outline: none; }
         #feedback-area { background: #f8fafc; border: 1.5px solid #e2e8f0; padding: 14px; border-radius: 12px; margin-top: 10px; }
         #feedback-text { font-size: 1rem; font-weight: 800; }
-        #game-board { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
-        .game-tile { background: #ffffff; border: 2px solid #e2e8f0; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 0.9rem; min-height: 75px; display: flex; align-items: center; justify-content: center; text-align: center; color: #1a202c; }
-        .game-tile.selected { background: #e6f4ea; border-color: #007749; color: #004d2f; }
-        .game-tile.matched { background: #f4faf6; border-color: #ffb81c; color: #b37d00; opacity: 0.5; pointer-events: none; }
         .hidden { display: none !important; }
     </style>
 </head>
@@ -58,73 +53,59 @@
     <div class="app-container">
         <header id="app-header">
             <div class="logo">🇿🇦 TaalTrek</div>
-            <div class="stats" id="xp-display">⭐ 50</div>
+            <div class="stats" id="xp-display">⭐ 100</div>
         </header>
 
         <div id="main-screen" class="screen active">
             <div class="tab-header">
-                <button class="tab-btn active" onclick="switchTab('lessons')">📚 Lessons</button>
-                <button class="tab-btn" onclick="switchTab('flashcards')">🧠 Flashcards</button>
-                <button class="tab-btn" onclick="switchTab('games')">🎮 Games</button>
+                <button class="tab-btn active" onclick="switchTab('lessons')">📚 Full Curriculum</button>
             </div>
 
             <div class="screen-scroll-content">
                 <div id="lessons-tab" class="tab-content active">
                     <div class="level-section">
-                        <h3>🌱 Module 1: Foundations</h3>
+                        <h3>🌱 Module 1: Foundations & Core Interactions</h3>
                         <div class="lesson-grid" id="mod1-grid"></div>
                     </div>
                     <div class="level-section">
-                        <h3>🌿 Module 2: Daily Life & Travel</h3>
+                        <h3>🌿 Module 2: Daily Life, Travel & Food</h3>
                         <div class="lesson-grid" id="mod2-grid"></div>
                     </div>
                     <div class="level-section">
-                        <h3>🌳 Module 3: Intermediate Routine</h3>
+                        <h3>🌳 Module 3: Intermediate Routine & Society</h3>
                         <div class="lesson-grid" id="mod3-grid"></div>
                     </div>
                     <div class="level-section">
-                        <h3>🔥 Module 4: Advanced Grammar</h3>
+                        <h3>🔥 Module 4: Advanced Grammar & Complex Sentences</h3>
                         <div class="lesson-grid" id="mod4-grid"></div>
                     </div>
                     <div class="level-section">
-                        <h3>⚡ Module 5: Idioms & Fluency</h3>
+                        <h3>⚡ Module 5: Idioms, Nuances & Fluency Mastery</h3>
                         <div class="lesson-grid" id="mod5-grid"></div>
-                    </div>
-                </div>
-
-                <div id="flashcards-tab" class="tab-content">
-                    <h3 style="color:#001489; font-size:0.95rem; margin-bottom:4px;">Spaced Repetition Queue</h3>
-                    <p style="font-size:0.82rem; color:#64748b; margin-bottom:10px;">Review items and core phrases:</p>
-                    <div id="flashcard-queue" style="display:flex; flex-direction:column; gap:10px;"></div>
-                </div>
-
-                <div id="games-tab" class="tab-content">
-                    <div class="game-card" onclick="startMatchingGame()">
-                        <h4>🧩 Matching Pairs</h4>
-                        <p>Match Afrikaans words with English translations for bonus XP!</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="study-screen" class="screen">
-            <button class="back-btn" onclick="returnHome()">⬅️ Back to Menu</button>
-            <h2 id="study-title">Study Vocabulary</h2>
+            <button class="back-btn" onclick="returnHome()">⬅️ Back to Curriculum</button>
+            <h2 id="study-title">Lesson Overview</h2>
             <div class="screen-scroll-content">
+                <div id="grammar-container"></div>
                 <div id="vocab-list"></div>
             </div>
             <div class="fixed-bottom-bar">
-                <button class="primary-btn" onclick="startQuiz()">Start Quiz 🚀</button>
+                <button class="primary-btn" onclick="startQuiz()">Launch Interactive Quiz 🚀</button>
             </div>
         </div>
 
         <div id="lesson-screen" class="screen">
-            <button class="back-btn" onclick="returnHome()">⬅️ Back to Menu</button>
+            <button class="back-btn" onclick="returnHome()">⬅️ Quit Lesson</button>
             <div style="height: 10px;"></div>
             <div class="progress-bar"><div id="progress-fill"></div></div>
             <h2 id="question-number">Question 1</h2>
             <div class="screen-scroll-content">
-                <div id="question-text">Translate this word:</div>
+                <div id="question-text">Translate this phrase:</div>
                 <div class="interaction-area" id="interaction-area"></div>
                 <div id="feedback-area" class="hidden">
                     <div class="feedback-top"><span id="feedback-text">Correct!</span></div>
@@ -134,9 +115,9 @@
         </div>
 
         <div id="result-screen" class="screen" style="text-align: center; justify-content: center;">
-            <h2>🎉 Lesson Completed!</h2>
-            <p id="result-stats" style="margin-bottom: 20px; font-size: 1.05rem; font-weight: 700; color: #007749;">You earned XP!</p>
-            <button class="primary-btn" onclick="returnHome()">Back to Dashboard</button>
+            <h2>🎉 Comprehensive Lesson Complete!</h2>
+            <p id="result-stats" style="margin-bottom: 20px; font-size: 1.05rem; font-weight: 700; color: #007749;">XP earned!</p>
+            <button class="primary-btn" onclick="returnHome()">Return to Dashboard</button>
         </div>
     </div>
 
@@ -144,139 +125,238 @@
         const allLessons = [
             // MODULE 1
             { 
-                id: "l1", module: 1, title: "1. Greetings & Introductions", 
-                dialogue: [{ af: "Hallo, goeiemôre! Hoe gaan dit?", en: "Hello, good morning! How are you?", speaker: "Jan" }],
-                vocab: [{ af: "Goeiemôre", en: "Good morning" }, { af: "Hoe gaan dit?", en: "How are you?" }, { af: "Dankie", en: "Thank you" }], 
+                id: "l1", module: 1, title: "1.1 Greetings, Introductions & Polite Forms", 
+                grammar: "Afrikaans uses direct word order (Subject-Verb-Object). Formal greetings depend on the time of day: Goeiemôre (Morning), Goeiemiddag (Afternoon), Goeienaand (Evening).",
+                dialogue: [
+                    { af: "Goeiemôre, hoe gaan dit met jou vandag?", en: "Good morning, how are things with you today?", speaker: "Jan" },
+                    { af: "Baie goed, dankie! En met jou besigheid?", en: "Very well, thank you! And with your business?", speaker: "Sanna" }
+                ],
+                vocab: [
+                    { af: "Goeiemôre", en: "Good morning" }, { af: "Hoe gaan dit?", en: "How are you?" }, 
+                    { af: "Baie goed", en: "Very well" }, { af: "Dankie", en: "Thank you" }, { af: "Vandag", en: "Today" }
+                ], 
                 questions: [
                     { type: "mcq", q: "Translate: 'Goeiemôre'", options: ["Good morning", "Good night", "Goodbye", "Hello"], a: "Good morning" },
+                    { type: "mcq", q: "What does 'Hoe gaan dit?' mean?", options: ["How are you?", "Who are you?", "Where are you?", "How old are you?"], a: "How are you?" },
                     { type: "type", q: "Type the Afrikaans word for 'Thank you'", a: "Dankie" }
                 ] 
             },
             { 
-                id: "l2", module: 1, title: "2. Essential Courtesies", 
-                dialogue: [{ af: "Asseblief, kan ek 'n koppie koffie kry?", en: "Please, can I get a cup of coffee?", speaker: "Klant" }],
-                vocab: [{ af: "Asseblief", en: "Please" }, { af: "Koffie", en: "Coffee" }, { af: "Jammer", en: "Sorry" }], 
+                id: "l2", module: 1, title: "1.2 Essential Courtesies & Everyday Needs", 
+                grammar: "Use 'Asseblief' for both 'please' and 'here you go'. To make polite requests, use 'Kan ek asseblief...' (Can I please...).",
+                dialogue: [
+                    { af: "Asseblief, kan ek 'n koppie warm koffie kry?", en: "Please, can I get a cup of hot coffee?", speaker: "Klant" },
+                    { af: "Natuurlik, dadelik vir jou!", en: "Of course, right away for you!", speaker: "Kelner" }
+                ],
+                vocab: [
+                    { af: "Asseblief", en: "Please" }, { af: "Koffie", en: "Coffee" }, 
+                    { af: "Natuurlik", en: "Of course" }, { af: "Jammer", en: "Sorry" }, { af: "Koppie", en: "Cup" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Asseblief' mean?", options: ["Please", "Thank you", "Sorry", "Yes"], a: "Please" },
-                    { type: "type", q: "Type the Afrikaans word for 'Sorry'", a: "Jammer" }
+                    { type: "type", q: "Type the Afrikaans word for 'Sorry'", a: "Jammer" },
+                    { type: "mcq", q: "Translate: 'Natuurlik'", options: ["Of course", "Never", "Maybe", "Thanks"], a: "Of course" }
                 ] 
             },
             { 
-                id: "l3", module: 1, title: "3. Numbers & Money", 
-                dialogue: [{ af: "Dit kos tien rand.", en: "It costs ten rand.", speaker: "Koper" }],
-                vocab: [{ af: "Een", en: "One" }, { af: "Tien", en: "Ten" }, { af: "Rand", en: "Rand currency" }], 
+                id: "l3", module: 1, title: "1.3 Numbers, Counting & Money Basics", 
+                grammar: "Numbers 1-10 are foundational: Een (1), Twee (2), Drie (3), Vier (4), Vyf (5), Ses (6), Sewe (7), Agt (8), Nege (9), Tien (10). Currency is expressed in Rand.",
+                dialogue: [
+                    { af: "Hoeveel kos hierdie brood? Dit kos vyftig rand.", en: "How much does this bread cost? It costs fifty rand.", speaker: "Koper" }
+                ],
+                vocab: [
+                    { af: "Een / Twee / Drie", en: "1, 2, 3" }, { af: "Vier / Vyf / Ses", en: "4, 5, 6" }, 
+                    { af: "Tien", en: "Ten" }, { af: "Rand", en: "Currency unit" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What is 'Een' in English?", options: ["One", "Eight", "Ten", "Three"], a: "One" },
                     { type: "type", q: "Type the Afrikaans word for 'Ten'", a: "Tien" }
                 ] 
             },
+
             // MODULE 2
             { 
-                id: "l4", module: 2, title: "4. Food & Dining Out", 
-                dialogue: [{ af: "Ek wil graag water bestel.", en: "I would like to order water.", speaker: "Tois" }],
-                vocab: [{ af: "Water", en: "Water" }, { af: "Kos", en: "Food" }, { af: "Eet", en: "Eat" }], 
+                id: "l4", module: 2, title: "2.1 Ordering Food & Dining Out", 
+                grammar: "When expressing preferences or desires, use 'Ek wil graag...' (I would like...).",
+                dialogue: [
+                    { af: "Ek wil graag 'n tradisionele boereworsrol en water bestel.", en: "I would like to order a traditional boerewors roll and water.", speaker: "Tois" }
+                ],
+                vocab: [
+                    { af: "Water", en: "Water" }, { af: "Kos", en: "Food" }, 
+                    { af: "Eet", en: "Eat" }, { af: "Drink", en: "Drink" }, { af: "Restaurant", en: "Restaurant" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Water' mean?", options: ["Water", "Wine", "Milk", "Beer"], a: "Water" },
                     { type: "type", q: "Type the Afrikaans word for 'Food'", a: "Kos" }
                 ] 
             },
             { 
-                id: "l5", module: 2, title: "5. Asking Directions", 
-                dialogue: [{ af: "Waar is die naaste straat?", en: "Where is the nearest street?", speaker: "Toeris" }],
-                vocab: [{ af: "Waar", en: "Where" }, { af: "Regs", en: "Right" }, { af: "Links", en: "Left" }], 
+                id: "l5", module: 2, title: "2.2 Asking Directions & Transport", 
+                grammar: "Directional terms use specific markers: Regs (Right), Links (Left), Reguit (Straight ahead).",
+                dialogue: [
+                    { af: "Waar is die naaste treinstation, asseblief?", en: "Where is the nearest train station, please?", speaker: "Toeris" },
+                    { af: "Draai regs by die volgende verkeerslig.", en: "Turn right at the next traffic light.", speaker: "Inwoner" }
+                ],
+                vocab: [
+                    { af: "Waar", en: "Where" }, { af: "Regs", en: "Right" }, 
+                    { af: "Links", en: "Left" }, { af: "Straat", en: "Street" }, { af: "Verkeerslig", en: "Traffic light" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Waar' mean?", options: ["Where", "When", "Who", "Why"], a: "Where" },
                     { type: "type", q: "Type the Afrikaans word for 'Right'", a: "Regs" }
                 ] 
             },
             { 
-                id: "l6", module: 2, title: "6. Weather & Climate", 
-                dialogue: [{ af: "Dit is vandag baie warm.", en: "It is very hot today.", speaker: "Mia" }],
-                vocab: [{ af: "Warm", en: "Hot" }, { af: "Koud", en: "Cold" }, { af: "Reën", en: "Rain" }], 
+                id: "l6", module: 2, title: "2.3 Weather, Climate & Time", 
+                grammar: "Afrikaans sentence structure follows the Time-Manner-Place rule. Time expressions usually come right after the finite verb.",
+                dialogue: [
+                    { af: "Dit is vandag baie warm in Kaapstad!", en: "It is very hot today in Cape Town!", speaker: "Mia" }
+                ],
+                vocab: [
+                    { af: "Warm", en: "Hot" }, { af: "Koud", en: "Cold" }, 
+                    { af: "Reën", en: "Rain" }, { af: "Môre", en: "Tomorrow" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Warm' mean?", options: ["Hot", "Cold", "Windy", "Dry"], a: "Hot" },
                     { type: "type", q: "Type the Afrikaans word for 'Rain'", a: "Reën" }
                 ] 
             },
+
             // MODULE 3
             { 
-                id: "l7", module: 3, title: "7. Family & Relationships", 
-                dialogue: [{ af: "Dit is my broer en my suster.", en: "This is my brother and my sister.", speaker: "Anna" }],
-                vocab: [{ af: "Pa", en: "Dad" }, { af: "Ma", en: "Mom" }, { af: "Broer", en: "Brother" }], 
+                id: "l7", module: 3, title: "3.1 Family, Friends & Relationships", 
+                grammar: "Possessive pronouns change based on ownership: My (My), Jou (Your), Sy (His), Haar (Her).",
+                dialogue: [
+                    { af: "Dit is my ou broer en dit is my jonger suster.", en: "This is my older brother and this is my younger sister.", speaker: "Anna" }
+                ],
+                vocab: [
+                    { af: "Pa", en: "Dad" }, { af: "Ma", en: "Mom" }, 
+                    { af: "Broer", en: "Brother" }, { af: "Suster", en: "Sister" }, { af: "Vriend", en: "Friend" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What is 'Broer' in English?", options: ["Brother", "Sister", "Father", "Mother"], a: "Brother" },
                     { type: "type", q: "Type the Afrikaans word for 'Mom'", a: "Ma" }
                 ] 
             },
             { 
-                id: "l8", module: 3, title: "8. Hobbies & Free Time", 
-                dialogue: [{ af: "Hou jy daarvan om musiek te luister?", en: "Do you like listening to music?", speaker: "Jan" }],
-                vocab: [{ af: "Speel", en: "Play" }, { af: "Lees", en: "Read" }, { af: "Musiek", en: "Music" }], 
+                id: "l8", module: 3, title: "3.2 Hobbies, Sports & Leisure", 
+                grammar: "Expressing likes uses structures like 'Ek hou van...' (I like...) or 'om te' infinitive phrases.",
+                dialogue: [
+                    { af: "Hou jy daarvan om na musiek te luister in jou vrye tyd?", en: "Do you like listening to music in your free time?", speaker: "Jan" }
+                ],
+                vocab: [
+                    { af: "Speel", en: "Play" }, { af: "Lees", en: "Read" }, 
+                    { af: "Musiek", en: "Music" }, { af: "Sport", en: "Sport" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Lees' mean?", options: ["Read", "Write", "Listen", "Speak"], a: "Read" },
                     { type: "type", q: "Type the Afrikaans word for 'Play'", a: "Speel" }
                 ] 
             },
             { 
-                id: "l9", module: 3, title: "9. Shopping & Clothes", 
-                dialogue: [{ af: "Hierdie winkel is te duur.", en: "This shop is too expensive.", speaker: "Klaas" }],
-                vocab: [{ af: "Winkel", en: "Shop" }, { af: "Duur", en: "Expensive" }, { af: "Goedkoop", en: "Cheap" }], 
+                id: "l9", module: 3, title: "3.3 Shopping, Clothes & Bargaining", 
+                grammar: "Adjectives usually take an *-e* ending when they stand directly before a noun (e.g., 'die groot huis' vs 'die huis is groot').",
+                dialogue: [
+                    { af: "Hierdie blou hemp is te duur vir my.", en: "This blue shirt is too expensive for me.", speaker: "Klaas" }
+                ],
+                vocab: [
+                    { af: "Winkel", en: "Shop" }, { af: "Duur", en: "Expensive" }, 
+                    { af: "Goedkoop", en: "Cheap" }, { af: "Klere", en: "Clothes" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Duur' mean?", options: ["Expensive", "Cheap", "Big", "Small"], a: "Expensive" },
                     { type: "type", q: "Type the Afrikaans word for 'Shop'", a: "Winkel" }
                 ] 
             },
+
             // MODULE 4
             { 
-                id: "l10", module: 4, title: "10. Past Tense Sentences", 
-                dialogue: [{ af: "Ons het gister hard gewerk.", en: "We worked hard yesterday.", speaker: "Pieter" }],
-                vocab: [{ af: "Het ... gewerk", en: "Worked" }, { af: "Gister", en: "Yesterday" }, { af: "Gegaan", en: "Gone" }], 
+                id: "l10", module: 4, title: "4.1 Past Tense Mastery (Het ... ge-)", 
+                grammar: "The past tense uses the auxiliary verb **het** in the second position, while the main verb takes a **ge-** prefix and moves to the very end of the clause.",
+                dialogue: [
+                    { af: "Ons het gister hard gewerk aan die nuwe projek.", en: "We worked hard on the new project yesterday.", speaker: "Pieter" }
+                ],
+                vocab: [
+                    { af: "Het ... gewerk", en: "Worked" }, { af: "Gister", en: "Yesterday" }, 
+                    { af: "Gedoen", en: "Done" }, { af: "Gegaan", en: "Gone" }
+                ], 
                 questions: [
-                    { type: "mcq", q: "What auxiliary verb indicates past tense?", options: ["Het", "Sal", "Kan", "Moet"], a: "Het" },
+                    { type: "mcq", q: "Where does the past tense main verb go in Afrikaans?", options: ["At the end of the sentence", "Right after the subject", "At the very beginning", "Before the auxiliary verb"], a: "At the end of the sentence" },
                     { type: "type", q: "Type the Afrikaans word for 'Yesterday'", a: "Gister" }
                 ] 
             },
             { 
-                id: "l11", module: 4, title: "11. Future Tense & Modals", 
-                dialogue: [{ af: "Ek sal môre jou e-pos beantwoord.", en: "I will answer your email tomorrow.", speaker: "Sarie" }],
-                vocab: [{ af: "Sal", en: "Shall/Will" }, { af: "Moet", en: "Must" }, { af: "Kan", en: "Can" }], 
+                id: "l11", module: 4, title: "4.2 Future Tense & Modal Verbs", 
+                grammar: "Future tense uses **sal** in the second position, pushing the infinitive verb to the end of the sentence.",
+                dialogue: [
+                    { af: "Ek sal môre jou e-pos beantwoord en die dokument stuur.", en: "I will answer your email tomorrow and send the document.", speaker: "Sarie" }
+                ],
+                vocab: [
+                    { af: "Sal", en: "Will / Shall" }, { af: "Moet", en: "Must" }, 
+                    { af: "Kan", en: "Can" }, { af: "Wil", en: "Want" }
+                ], 
                 questions: [
-                    { type: "mcq", q: "Which modal verb means 'Will / Shall'?", options: ["Sal", "Het", "Was", "Is"], a: "Sal" },
+                    { type: "mcq", q: "Which auxiliary verb indicates the future tense?", options: ["Sal", "Het", "Was", "Is"], a: "Sal" },
                     { type: "type", q: "Type the Afrikaans word for 'Must'", a: "Moet" }
                 ] 
             },
             { 
-                id: "l12", module: 4, title: "12. Work & Office Life", 
-                dialogue: [{ af: "Die vergadering begin om negeuur.", en: "The meeting starts at nine o'clock.", speaker: "Manager" }],
-                vocab: [{ af: "Werk", en: "Work" }, { af: "Vergadering", en: "Meeting" }, { af: "Baas", en: "Boss" }], 
+                id: "l12", module: 4, title: "4.3 Professional Life & Office Communication", 
+                grammar: "Professional register requires formal address pronouns such as **u** instead of **jou** when writing formal correspondence.",
+                dialogue: [
+                    { af: "Die belangrike vergadering begin om negeuur in die hoofkantoor.", en: "The important meeting starts at nine o'clock in the main office.", speaker: "Bestuurder" }
+                ],
+                vocab: [
+                    { af: "Werk", en: "Work" }, { af: "Vergadering", en: "Meeting" }, 
+                    { af: "E-pos", en: "Email" }, { af: "Baas", en: "Boss" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Vergadering' mean?", options: ["Meeting", "Break", "Office", "Contract"], a: "Meeting" },
                     { type: "type", q: "Type the Afrikaans word for 'Work'", a: "Werk" }
                 ] 
             },
+
             // MODULE 5
             { 
-                id: "l13", module: 5, title: "13. Idioms & Expressions", 
-                dialogue: [{ af: "Ag man, moenie worry nie, alles loop vol plan!", en: "Oh man, don't worry, everything goes to plan!", speaker: "Bettie" }],
-                vocab: [{ af: "Ag man!", en: "Oh man!" }, { af: "Alles", en: "Everything" }, { af: "Plan", en: "Plan" }], 
+                id: "l13", module: 5, title: "5.1 South African Idioms & Expressions", 
+                grammar: "Idiomatic Afrikaans relies heavily on culturally rich expressions that do not translate literally word-for-word.",
+                dialogue: [
+                    { af: "Ag man, moenie worry nie, alles loop vol plan en dis mos lekke!", en: "Oh man, don't worry, everything goes to plan and it's lekker!", speaker: "Bettie" }
+                ],
+                vocab: [
+                    { af: "Ag man!", en: "Oh man!" }, { af: "Alles", en: "Everything" }, 
+                    { af: "Volgens plan", en: "According to plan" }, { af: "Lekker", en: "Nice / Great" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Alles' mean?", options: ["Everything", "Nothing", "Something", "Anything"], a: "Everything" },
                     { type: "type", q: "Type the expression for 'Oh man!'", a: "Ag man" }
                 ] 
             },
             { 
-                id: "l14", module: 5, title: "14. Storytelling & Narratives", 
-                dialogue: [{ af: "Toe het hy die hele verhaal vertel.", en: "Then he told the whole story.", speaker: "Oupa" }],
-                vocab: [{ af: "Toe", en: "Then / When" }, { af: "Verhaal", en: "Story" }, { af: "Droom", en: "Dream" }], 
+                id: "l14", module: 5, title: "5.2 Advanced Storytelling & Narratives", 
+                grammar: "Subordinate clauses in Afrikaans introduce complex sentence structures where verbs shift to the end of the dependent clause.",
+                dialogue: [
+                    { af: "Toe het hy die hele verhaal vertel van wat gister gebeur het.", en: "Then he told the whole story of what happened yesterday.", speaker: "Oupa" }
+                ],
+                vocab: [
+                    { af: "Toe", en: "Then / When" }, { af: "Verhaal", en: "Story" }, 
+                    { af: "Droom", en: "Dream" }, { af: "Gebeur", en: "Happen" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Verhaal' mean?", options: ["Story", "Song", "Book", "Poem"], a: "Story" },
                     { type: "type", q: "Type the Afrikaans word for 'Then'", a: "Toe" }
                 ] 
             },
             { 
-                id: "l15", module: 5, title: "15. Advanced Fluency & Debate", 
-                dialogue: [{ af: "Ek stem saam met jou opinie.", en: "I agree with your opinion.", speaker: "Expert" }],
-                vocab: [{ af: "Opinie", en: "Opinion" }, { af: "Saamstem", en: "Agree" }, { af: "Verskil", en: "Differ" }], 
+                id: "l15", module: 5, title: "5.3 Conversational Fluency & Debate", 
+                grammar: "Mastering native-level discourse markers allows you to smoothly transition opinions, agree, or offer contrasting viewpoints.",
+                dialogue: [
+                    { af: "Ek stem volkome saam met jou opinie oor hierdie saak.", en: "I completely agree with your opinion on this matter.", speaker: "Ekspert" }
+                ],
+                vocab: [
+                    { af: "Opinie", en: "Opinion" }, { af: "Saamstem", en: "Agree" }, 
+                    { af: "Verskil", en: "Differ" }, { af: "Volkome", en: "Completely" }
+                ], 
                 questions: [
                     { type: "mcq", q: "What does 'Saamstem' mean?", options: ["Agree", "Disagree", "Argue", "Conclude"], a: "Agree" },
                     { type: "type", q: "Type the Afrikaans word for 'Opinion'", a: "Opinie" }
@@ -284,7 +364,7 @@
             }
         ];
 
-        let userData = JSON.parse(localStorage.getItem('taaltrek_data')) || { stars: 50, completed: [], weakWords: [] };
+        let userData = JSON.parse(localStorage.getItem('taaltrek_data')) || { stars: 100, completed: [] };
         let currentLessonData = null;
         let currentQuestionIndex = 0;
         let sessionScore = 0;
@@ -334,18 +414,8 @@
         window.switchTab = function(tabName) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            
-            if (tabName === 'lessons') {
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-                document.getElementById('lessons-tab').classList.add('active');
-            } else if (tabName === 'flashcards') {
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                document.getElementById('flashcards-tab').classList.add('active');
-                loadSmartFlashcards();
-            } else {
-                document.querySelectorAll('.tab-btn')[2].classList.add('active');
-                document.getElementById('games-tab').classList.add('active');
-            }
+            document.querySelectorAll('.tab-btn')[0].classList.add('active');
+            document.getElementById('lessons-tab').classList.add('active');
         };
 
         window.startLesson = function(lessonId) {
@@ -353,6 +423,15 @@
             if (!lesson) return;
             currentLessonData = lesson;
             document.getElementById('study-title').innerText = lesson.title;
+            
+            const grammarContainer = document.getElementById('grammar-container');
+            grammarContainer.innerHTML = `
+                <div class="grammar-box">
+                    <h4>📖 Grammar Focus</h4>
+                    <p>${lesson.grammar}</p>
+                </div>
+            `;
+
             const vList = document.getElementById('vocab-list');
             vList.innerHTML = '';
 
@@ -380,7 +459,7 @@
             }
 
             const vh = document.createElement('h3');
-            vh.innerText = "📚 Vocabulary";
+            vh.innerText = "📚 Key Vocabulary";
             vh.style.color = "#007749";
             vh.style.fontSize = "0.9rem";
             vh.style.marginTop = "6px";
@@ -482,60 +561,15 @@
 
         function finishLesson() {
             document.getElementById('progress-fill').style.width = '100%';
-            userData.stars += sessionScore;
+            userData.stars += (sessionScore * 5);
             localStorage.setItem('taaltrek_data', JSON.stringify(userData));
             updateHeader();
-            document.getElementById('result-stats').innerText = `You earned +${sessionScore} XP! Total Stars: ${userData.stars}`;
+            document.getElementById('result-stats').innerText = `You earned +${sessionScore * 5} XP! Total Stars: ${userData.stars}`;
             showScreen('result');
         }
 
         window.returnHome = function() {
             showScreen('home');
-        };
-
-        function loadSmartFlashcards() {
-            const container = document.getElementById('flashcard-queue');
-            if (!container) return;
-            container.innerHTML = `<p style="text-align:center; color:#718096; font-size:0.9rem;">Review items and missed concepts will populate here dynamically.</p>`;
-        }
-
-        window.startMatchingGame = function() {
-            showScreen('lesson');
-            document.getElementById('question-number').innerText = "Mini-Game: Matching Pairs";
-            document.getElementById('question-text').innerText = "Match core terms!";
-            document.getElementById('progress-fill').style.width = '100%';
-            document.getElementById('interaction-area').innerHTML = '<div id="game-board"></div>';
-            
-            const board = document.getElementById('game-board');
-            let tiles = [
-                { text: "Goeiemôre", match: "Good morning" }, { text: "Good morning", match: "Goeiemôre" },
-                { text: "Asseblief", match: "Please" }, { text: "Please", match: "Asseblief" }
-            ];
-            tiles.sort(() => Math.random() - 0.5);
-            let selectedTile = null;
-
-            tiles.forEach(item => {
-                const tile = document.createElement('div');
-                tile.classList.add('game-tile');
-                tile.innerText = item.text;
-                tile.onclick = () => {
-                    if (tile.classList.contains('matched') || tile.classList.contains('selected')) return;
-                    if (!selectedTile) {
-                        selectedTile = { element: tile, data: item };
-                        tile.classList.add('selected');
-                    } else {
-                        if (selectedTile.data.match === item.text) {
-                            selectedTile.element.classList.add('matched');
-                            tile.classList.add('matched');
-                            selectedTile = null;
-                        } else {
-                            selectedTile.element.classList.remove('selected');
-                            selectedTile = null;
-                        }
-                    }
-                };
-                board.appendChild(tile);
-            });
         };
 
         updateHeader();
