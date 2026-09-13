@@ -165,6 +165,62 @@ const allLessons = [
             { type: "type", q: "Type the Afrikaans word for 'Sad'", a: "Hartseer" },
             { type: "mcq", q: "Translate: 'Tired'", options: ["Moeg", "Bly", "Hartseer", "Kwaad"], a: "Moeg" }
         ]
+    },
+    // --- NEW FLUENCY & SENTENCE MODULES ---
+    {
+        id: "l16", title: "16. Pronouns & People",
+        vocab: [{af: "Ek", en: "I"}, {af: "Jy", en: "You"}, {af: "Hy", en: "He"}, {af: "Sy", en: "She"}, {af: "Ons", en: "We"}],
+        questions: [
+            { type: "mcq", q: "Translate: 'I'", options: ["Jy", "Ek", "Hy", "Sy"], a: "Ek" },
+            { type: "type", q: "Type the Afrikaans word for 'You'", a: "Jy" },
+            { type: "listen", q: "Type what you hear:", a: "Ons" },
+            { type: "mcq", q: "Translate: 'She'", options: ["Hy", "Sy", "Ek", "Jy"], a: "Sy" },
+            { type: "type", q: "Type the Afrikaans word for 'He'", a: "Hy" }
+        ]
+    },
+    {
+        id: "l17", title: "17. Simple Sentences I",
+        vocab: [{af: "Ek drink water", en: "I drink water"}, {af: "Jy eet brood", en: "You eat bread"}, {af: "Sy is bly", en: "She is happy"}, {af: "Hy slaap nou", en: "He sleeps now"}],
+        questions: [
+            { type: "mcq", q: "Translate: 'I drink water'", options: ["Jy eet brood", "Ek drink water", "Hy slaap nou", "Sy is bly"], a: "Ek drink water" },
+            { type: "type", q: "Translate: 'You eat brood'", a: "Jy eet brood" },
+            { type: "listen", q: "Type what you hear:", a: "Sy is bly" },
+            { type: "type", q: "Translate: 'He sleeps now'", a: "Hy slaap nou" },
+            { type: "mcq", q: "Translate: 'She is happy'", options: ["Sy is bly", "Ek drink water", "Jy eet brood", "Hy slaap nou"], a: "Sy is bly" }
+        ]
+    },
+    {
+        id: "l18", title: "18. Questions & Places",
+        vocab: [{af: "Waar is die kar?", en: "Where is the car?"}, {af: "Hoe gaan dit?", en: "How are you?"}, {af: "Wat is dit?", en: "What is this?"}, {af: "Goeie dag", en: "Good day"}],
+        questions: [
+            { type: "listen", q: "Type what you hear:", a: "Hoe gaan dit?" },
+            { type: "mcq", q: "Translate: 'Where is the car?'", options: ["Waar is die kar?", "Wat is dit?", "Hoe gaan dit?", "Goeie dag"], a: "Waar is die kar?" },
+            { type: "type", q: "Translate: 'What is this?'", a: "Wat is dit?" },
+            { type: "mcq", q: "Translate: 'Good day'", options: ["Goeie dag", "Waar is die kar?", "Wat is dit?", "Hoe gaan dit?"], a: "Goeie dag" },
+            { type: "type", q: "Translate: 'How are you?'", a: "Hoe gaan dit?" }
+        ]
+    },
+    {
+        id: "l19", title: "19. Negation (Nie... nie)",
+        vocab: [{af: "Ek praat nie Engels nie", en: "I do not speak English"}, {af: "Dit is nie koud nie", en: "It is not cold"}, {af: "Ek verstaan nie", en: "I do not understand"}, {af: "Nee, ek wil nie", en: "No, I don't want to"}],
+        questions: [
+            { type: "mcq", q: "Translate: 'I do not understand'", options: ["Ek verstaan nie", "Dit is nie koud nie", "Ek praat nie Engels nie", "Nee, ek wil nie"], a: "Ek verstaan nie" },
+            { type: "type", q: "Translate: 'It is not cold'", a: "Dit is nie koud nie" },
+            { type: "listen", q: "Type what you hear:", a: "Ek praat nie Engels nie" },
+            { type: "mcq", q: "Translate: 'No, I don't want to'", options: ["Nee, ek wil nie", "Ek verstaan nie", "Dit is nie koud nie", "Ek praat nie Engels nie"], a: "Nee, ek wil nie" },
+            { type: "type", q: "Translate: 'I do not understand'", a: "Ek verstaan nie" }
+        ]
+    },
+    {
+        id: "l20", title: "20. Conversational Flow",
+        vocab: [{af: "Lekker verjaar", en: "Happy birthday"}, {af: "Sterkte met alles", en: "Good luck with everything"}, {af: "Baie dankie", en: "Thank you very much"}, {af: "Tot siens môre", en: "Goodbye until tomorrow"}],
+        questions: [
+            { type: "listen", q: "Type what you hear:", a: "Baie dankie" },
+            { type: "mcq", q: "Translate: 'Happy birthday'", options: ["Lekker verjaar", "Sterkte met alles", "Baie dankie", "Tot siens môre"], a: "Lekker verjaar" },
+            { type: "type", q: "Translate: 'Thank you very much'", a: "Baie dankie" },
+            { type: "mcq", q: "Translate: 'Good luck with everything'", options: ["Sterkte met alles", "Lekker verjaar", "Tot siens môre", "Baie dankie"], a: "Sterkte met alles" },
+            { type: "type", q: "Translate: 'Goodbye until tomorrow'", a: "Tot siens môre" }
+        ]
     }
 ];
 
@@ -179,7 +235,6 @@ const totalStarsDisplay = document.getElementById('total-stars');
 const lessonMenu = document.getElementById('lesson-menu');
 const vocabList = document.getElementById('vocab-list');
 
-// Interaction elements
 const optionsContainer = document.getElementById('options-container');
 const typingArea = document.getElementById('typing-area');
 const typingInput = document.getElementById('typing-input');
@@ -260,7 +315,6 @@ function loadQuestion() {
     feedbackArea.classList.add('hidden');
     replayBtn.classList.add('hidden');
     
-    // Hide all input methods initially
     optionsContainer.classList.add('hidden');
     typingArea.classList.add('hidden');
     largePlayBtn.classList.add('hidden');
@@ -268,7 +322,7 @@ function loadQuestion() {
     
     const currentQ = currentLessonData.questions[currentQuestionIndex];
     questionText.innerText = currentQ.q;
-    lastSpokenWord = currentQ.a; // Store the answer for audio features
+    lastSpokenWord = currentQ.a; 
     progressFill.style.width = `${(currentQuestionIndex / currentLessonData.questions.length) * 100}%`;
 
     if (currentQ.type === 'mcq') {
@@ -289,27 +343,24 @@ function loadQuestion() {
 
         if (currentQ.type === 'listen') {
             largePlayBtn.classList.remove('hidden');
-            playAudio(currentQ.a); // Auto-play the word
+            playAudio(currentQ.a); 
         }
     }
 }
 
-// Handle Typing Submit
 checkTypingBtn.onclick = () => {
     const userInput = typingInput.value.trim();
     if (!userInput) return;
     const currentQ = currentLessonData.questions[currentQuestionIndex];
-    processAnswer(userInput.toLowerCase(), currentQ.a.toLowerCase(), null);
+    processAnswer(userInput, currentQ.a, null);
 };
 
-// Allow 'Enter' key to submit typing answer
 typingInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter' && !checkTypingBtn.disabled) {
         checkTypingBtn.click();
     }
 });
 
-// Allow 'Enter' key to click Next when feedback is shown
 document.addEventListener('keypress', function(e) {
     if (e.key === 'Enter' && !feedbackArea.classList.contains('hidden')) {
         nextBtn.click();
@@ -317,9 +368,9 @@ document.addEventListener('keypress', function(e) {
 });
 
 function processAnswer(selected, correct, clickedBtn) {
-    const isCorrect = selected === correct;
+    // Case-insensitive comparison for typing flexibility, but preserve exact grammar checks
+    const isCorrect = selected.trim().toLowerCase() === correct.trim().toLowerCase();
     
-    // Disable inputs
     checkTypingBtn.disabled = true;
     typingInput.disabled = true;
     const allBtns = optionsContainer.querySelectorAll('.option-btn');
@@ -336,12 +387,10 @@ function processAnswer(selected, correct, clickedBtn) {
         if (clickedBtn) clickedBtn.classList.add('wrong');
         else typingInput.style.borderColor = "#f56565";
         
-        // Show correct capitalization in the UI
         feedbackText.innerText = `Incorrect. Answer: ${lastSpokenWord}`;
         feedbackText.style.color = "#c53030";
         
-        // Highlight correct button if in MCQ mode
-        allBtns.forEach(b => { if (b.innerText.toLowerCase() === correct) b.classList.add('correct'); });
+        allBtns.forEach(b => { if (b.innerText.trim().toLowerCase() === correct.trim().toLowerCase()) b.classList.add('correct'); });
     }
     
     playAudio(lastSpokenWord);
@@ -350,7 +399,7 @@ function processAnswer(selected, correct, clickedBtn) {
 }
 
 nextBtn.onclick = () => {
-    typingInput.style.borderColor = "#cbd5e0"; // Reset input border
+    typingInput.style.borderColor = "#cbd5e0"; 
     currentQuestionIndex++;
     if (currentQuestionIndex < currentLessonData.questions.length) {
         loadQuestion();
