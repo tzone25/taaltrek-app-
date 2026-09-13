@@ -81,7 +81,7 @@ function showScreen(screenName) {
 }
 
 // Tab Switching Logic for Homepage
-function switchTab(tabName) {
+window.switchTab = function(tabName) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
     
@@ -92,27 +92,32 @@ function switchTab(tabName) {
         document.querySelectorAll('.tab-btn')[1].classList.add('active');
         document.getElementById('games-tab').classList.add('active');
     }
-}
+};
 
 function renderMenus() {
+    if (!beginnerMenu || !intermediateMenu || !fluentMenu) return;
+    
     beginnerMenu.innerHTML = '';
     intermediateMenu.innerHTML = '';
     fluentMenu.innerHTML = '';
 
     allLessons.forEach((lesson) => {
-        const btn = document.createElement('button');
-        btn.classList.add('primary-btn');
-        if (userData.completed.includes(lesson.id)) {
-            btn.innerText = `✅ ${lesson.title}`;
-            btn.classList.add('completed');
+        const card = document.createElement('div');
+        card.classList.add('lesson-card');
+        
+        const isCompleted = userData.completed.includes(lesson.id);
+        if (isCompleted) {
+            card.classList.add('completed');
+            card.innerHTML = `<span>${lesson.title}</span> <span class="status-icon">✅</span>`;
         } else {
-            btn.innerText = lesson.title;
+            card.innerHTML = `<span>${lesson.title}</span> <span class="status-icon">➡️</span>`;
         }
-        btn.onclick = () => startStudyPhase(lesson);
+        
+        card.onclick = () => startStudyPhase(lesson);
 
-        if (lesson.level === 'beginner') beginnerMenu.appendChild(btn);
-        else if (lesson.level === 'intermediate') intermediateMenu.appendChild(btn);
-        else if (lesson.level === 'fluent') fluentMenu.appendChild(btn);
+        if (lesson.level === 'beginner') beginnerMenu.appendChild(card);
+        else if (lesson.level === 'intermediate') intermediateMenu.appendChild(card);
+        else if (lesson.level === 'fluent') fluentMenu.appendChild(card);
     });
 }
 
@@ -206,7 +211,7 @@ function processAnswer(selected, correct, clickedBtn) {
 
     if (isCorrect) {
         if (clickedBtn) clickedBtn.classList.add('correct');
-        else typingInput.style.borderColor = "#48bb78";
+        else typingInput.classList.add('correct');
         
         feedbackText.innerText = "Correct! 🎉";
         feedbackText.style.color = "#2f855a";
@@ -228,6 +233,7 @@ function processAnswer(selected, correct, clickedBtn) {
 
 nextBtn.onclick = () => {
     typingInput.style.borderColor = "#cbd5e0"; 
+    typingInput.classList.remove('correct');
     currentQuestionIndex++;
     if (currentQuestionIndex < currentLessonData.questions.length) {
         loadQuestion();
@@ -250,12 +256,11 @@ function finishLesson() {
 }
 
 // --- Mini-Game Logic ---
-function startMatchingGame() {
+window.startMatchingGame = function() {
     showScreen('game');
     const board = document.getElementById('game-board');
     board.innerHTML = '';
 
-    // Pick 4 random words from lesson 1 vocab for the game
     const sampleVocab = allLessons[0].vocab;
     let tiles = [];
     sampleVocab.forEach(item => {
@@ -263,7 +268,6 @@ function startMatchingGame() {
         tiles.push({ text: item.en, matchKey: item.af });
     });
 
-    // Shuffle tiles
     tiles.sort(() => Math.random() - 0.5);
 
     let firstSelection = null;
@@ -284,7 +288,6 @@ function startMatchingGame() {
                 firstSelection = { tile, matchKey: tileData.matchKey };
             } else {
                 if (firstSelection.matchKey === tileData.matchKey && firstSelection.tile !== tile) {
-                    // Match!
                     firstSelection.tile.classList.add('matched');
                     tile.classList.add('matched');
                     firstSelection = null;
@@ -300,7 +303,6 @@ function startMatchingGame() {
                         }, 300);
                     }
                 } else {
-                    // No match
                     let prev = firstSelection.tile;
                     setTimeout(() => {
                         prev.classList.remove('selected');
@@ -312,7 +314,7 @@ function startMatchingGame() {
         };
         board.appendChild(tile);
     });
-}
+};
 
 document.getElementById('quit-game-btn').onclick = () => showScreen('home');
 
