@@ -13,52 +13,29 @@ const allLessons = [
     // INTERMEDIATE (Lessons 8 - 14)
     { id: "l8", level: "intermediate", title: "8. Family", vocab: [{af: "Ma", en: "Mother"}, {af: "Pa", en: "Father"}, {af: "Broer", en: "Brother"}, {af: "Suster", en: "Sister"}], questions: [{ type: "listen", q: "Type what you hear:", a: "Broer" }, { type: "mcq", q: "Translate: 'Sister'", options: ["Ma", "Pa", "Broer", "Suster"], a: "Suster" }, { type: "type", q: "Type the Afrikaans word for 'Father'", a: "Pa" }, { type: "mcq", q: "Translate: 'Mother'", options: ["Ma", "Broer", "Suster", "Pa"], a: "Ma" }, { type: "listen", q: "Type what you hear:", a: "Suster" }] },
     { id: "l9", level: "intermediate", title: "9. Weather", vocab: [{af: "Son", en: "Sun"}, {af: "Reën", en: "Rain"}, {af: "Wind", en: "Wind"}, {af: "Koud", en: "Cold"}], questions: [{ type: "type", q: "Type the Afrikaans word for 'Rain'", a: "Reën" }, { type: "mcq", q: "Translate: 'Cold'", options: ["Son", "Reën", "Wind", "Koud"], a: "Koud" }, { type: "listen", q: "Type what you hear:", a: "Wind" }, { type: "type", q: "Type the Afrikaans word for 'Sun'", a: "Son" }, { type: "mcq", q: "Translate: 'Wind'", options: ["Koud", "Son", "Wind", "Reën"], a: "Wind" }] },
-    { id: "l10", level: "intermediate", title: "10. Travel", vocab: [{af: "Kar", en: "Car"}, {af: "Trein", en: "Train"}, {af: "Bus", en: "Bus"}, {af: "Straat", en: "Street"}], questions: [{ type: "listen", q: "Type what you hear:", a: "Kar" }, { type: "mcq", q: "Translate: 'Train'", options: ["Bus", "Trein", "Straat", "Kar"], a: "Trein" }, { type: "type", q: "Type the Afrikaans word for 'Street'", a: "Straat" }, { type: "mcq", q: "Translate: 'Bus'", options: ["Kar", "Trein", "Bus", "Straat"], a: "Bus" }, { type: "listen", q: "Type what you hear:", a: "Trein" }] },
-    { id: "l11", level: "intermediate", title: "11. Time", vocab: [{af: "Dag", en: "Day"}, {af: "Nag", en: "Night"}, {af: "Vandag", en: "Today"}, {af: "Môre", en: "Tomorrow"}], questions: [{ type: "type", q: "Type the Afrikaans word for 'Today'", a: "Vandag" }, { type: "mcq", q: "Translate: 'Night'", options: ["Dag", "Vandag", "Nag", "Môre"], a: "Nag" }, { type: "listen", q: "Type what you hear:", a: "Môre" }, { type: "type", q: "Type the Afrikaans word for 'Day'", a: "Dag" }, { type: "mcq", q: "Translate: 'Tomorrow'", options: ["Môre", "Vandag", "Nag", "Dag"], a: "Môre" }] },
-    { id: "l12", level: "intermediate", title: "12. Verbs: Motion", vocab: [{af: "Loop", en: "Walk"}, {af: "Hardloop", en: "Run"}, {af: "Spring", en: "Jump"}, {af: "Staan", en: "Stand"}], questions: [{ type: "listen", q: "Type what you hear:", a: "Hardloop" }, { type: "mcq", q: "Translate: 'Jump'", options: ["Loop", "Staan", "Spring", "Hardloop"], a: "Spring" }, { type: "type", q: "Type the Afrikaans word for 'Walk'", a: "Loop" }, { type: "mcq", q: "Translate: 'Stand'", options: ["Staan", "Spring", "Loop", "Hardloop"], a: "Staan" }, { type: "listen", q: "Type what you hear:", a: "Loop" }] },
-    { id: "l13", level: "intermediate", title: "13. Verbs: Action", vocab: [{af: "Eet", en: "Eat"}, {af: "Drink", en: "Drink"}, {af: "Slaap", en: "Sleep"}, {af: "Werk", en: "Work"}], questions: [{ type: "type", q: "Type the Afrikaans word for 'Sleep'", a: "Slaap" }, { type: "listen", q: "Type what you hear:", a: "Eet" }, { type: "mcq", q: "Translate: 'Work'", options: ["Drink", "Werk", "Eet", "Slaap"], a: "Werk" }, { type: "type", q: "Type the Afrikaans word for 'Drink'", a: "Drink" }, { type: "mcq", q: "Translate: 'Eat'", options: ["Eet", "Slaap", "Werk", "Drink"], a: "Eet" }] },
-    { id: "l14", level: "intermediate", title: "14. Adjectives", vocab: [{af: "Groot", en: "Big"}, {af: "Klein", en: "Small"}, {af: "Mooi", en: "Pretty"}, {af: "Vinnig", en: "Fast"}], questions: [{ type: "listen", q: "Type what you hear:", a: "Mooi" }, { type: "mcq", q: "Translate: 'Fast'", options: ["Groot", "Vinnig", "Klein", "Mooi"], a: "Vinnig" }, { type: "type", q: "Type the Afrikaans word for 'Small'", a: "Klein" }, { type: "mcq", q: "Translate: 'Big'", options: ["Klein", "Groot", "Mooi", "Vinnig"], a: "Groot" }, { type: "listen", q: "Type what you hear:", a: "Groot" }] },
-
-    // FLUENT (Lessons 15 - 20)
-    { id: "l15", level: "fluent", title: "15. Feelings", vocab: [{af: "Bly", en: "Happy"}, {af: "Hartseer", en: "Sad"}, {af: "Kwaad", en: "Angry"}, {af: "Moeg", en: "Tired"}], questions: [{ type: "type", q: "Type the Afrikaans word for 'Angry'", a: "Kwaad" }, { type: "mcq", q: "Translate: 'Happy'", options: ["Hartseer", "Kwaad", "Bly", "Moeg"], a: "Bly" }, { type: "listen", q: "Type what you hear:", a: "Moeg" }, { type: "type", q: "Type the Afrikaans word for 'Sad'", a: "Hartseer" }, { type: "mcq", q: "Translate: 'Tired'", options: ["Moeg", "Bly", "Hartseer", "Kwaad"], a: "Moeg" }] },
-    { id: "l16", level: "fluent", title: "16. Pronouns & People", vocab: [{af: "Ek", en: "I"}, {af: "Jy", en: "You"}, {af: "Hy", en: "He"}, {af: "Sy", en: "She"}, {af: "Ons", en: "We"}], questions: [{ type: "mcq", q: "Translate: 'I'", options: ["Jy", "Ek", "Hy", "Sy"], a: "Ek" }, { type: "type", q: "Type the Afrikaans word for 'You'", a: "Jy" }, { type: "listen", q: "Type what you hear:", a: "Ons" }, { type: "mcq", q: "Translate: 'She'", options: ["Hy", "Sy", "Ek", "Jy"], a: "Sy" }, { type: "type", q: "Type the Afrikaans word for 'He'", a: "Hy" }] },
-    { id: "l17", level: "fluent", title: "17. Simple Sentences I", vocab: [{af: "Ek drink water", en: "I drink water"}, {af: "Jy eet brood", en: "You eat bread"}, {af: "Sy is bly", en: "She is happy"}, {af: "Hy slaap nou", en: "He sleeps now"}], questions: [{ type: "mcq", q: "Translate: 'I drink water'", options: ["Jy eet brood", "Ek drink water", "Hy slaap nou", "Sy is bly"], a: "Ek drink water" }, { type: "type", q: "Translate: 'You eat brood'", a: "Jy eet brood" }, { type: "listen", q: "Type what you hear:", a: "Sy is bly" }, { type: "type", q: "Translate: 'He sleeps now'", a: "Hy slaap nou" }, { type: "mcq", q: "Translate: 'She is happy'", options: ["Sy is bly", "Ek drink water", "Jy eet brood", "Hy slaap nou"], a: "Sy is bly" }] },
-    { id: "l18", level: "fluent", title: "18. Questions & Places", vocab: [{af: "Waar is die kar?", en: "Where is the car?"}, {af: "Hoe gaan dit?", en: "How are you?"}, {af: "Wat is dit?", en: "What is this?"}, {af: "Goeie dag", en: "Good day"}], questions: [{ type: "listen", q: "Type what you hear:", a: "Hoe gaan dit?" }, { type: "mcq", q: "Translate: 'Where is the car?'", options: ["Waar is die kar?", "Wat is dit?", "Hoe gaan dit?", "Goeie dag"], a: "Waar is die kar?" }, { type: "type", q: "Translate: 'What is this?'", a: "Wat is dit?" }, { type: "mcq", q: "Translate: 'Good day'", options: ["Goeie dag", "Waar is die kar?", "Wat is dit?", "Hoe gaan dit?"], a: "Goeie dag" }, { type: "type", q: "Translate: 'How are you?'", a: "Hoe gaan dit?" }] },
-    { id: "l19", level: "fluent", title: "19. Negation (Nie... nie)", vocab: [{af: "Ek praat nie Engels nie", en: "I do not speak English"}, {af: "Dit is nie koud nie", en: "It is not cold"}, {af: "Ek verstaan nie", en: "I do not understand"}, {af: "Nee, ek wil nie", en: "No, I don't want to"}], questions: [{ type: "mcq", q: "Translate: 'I do not understand'", options: ["Ek verstaan nie", "Dit is nie koud nie", "Ek praat nie Engels nie", "Nee, ek wil nie"], a: "Ek verstaan nie" }, { type: "type", q: "Translate: 'It is not cold'", a: "Dit is nie koud nie" }, { type: "listen", q: "Type what you hear:", a: "Ek praat nie Engels nie" }, { type: "mcq", q: "Translate: 'No, I don't want to'", options: ["Nee, ek wil nie", "Ek verstaan nie", "Dit is nie koud nie", "Ek praat nie Engels nie"], a: "Nee, ek wil nie" }, { type: "type", q: "Translate: 'I do not understand'", a: "Ek verstaan nie" }] },
-    { id: "l20", level: "fluent", title: "20. Conversational Flow", vocab: [{af: "Lekker verjaar", en: "Happy birthday"}, {af: "Sterkte met alles", en: "Good luck with everything"}, {af: "Baie dankie", en: "Thank you very much"}, {af: "Tot siens môre", en: "Goodbye until tomorrow"}], questions: [{ type: "listen", q: "Type what you hear:", a: "Baie dankie" }, { type: "mcq", q: "Translate: 'Happy birthday'", options: ["Lekker verjaar", "Sterkte met alles", "Baie dankie", "Tot siens môre"], a: "Lekker verjaar" }, { type: "type", q: "Translate: 'Thank you very much'", a: "Baie dankie" }, { type: "mcq", q: "Translate: 'Good luck with everything'", options: ["Sterkte met alles", "Lekker verjaar", "Tot siens môre", "Baie dankie"], a: "Sterkte met alles" }, { type: "type", q: "Translate: 'Goodbye until tomorrow'", a: "Tot siens môre" }] }
+    { id: "l10", level: "intermediate", title: "10. Travel", vocab: [{af: "Kar", en: "Car"}, {af: "Trein", en: "Train"}, {af: "Bus", en: "Bus"}, {af: "Straat", en: "Street"}], questions: [{ type: "listen", q: "Type what you hear:", a: "Kar" }, { type: "mcq", q: "Translate: 'Train'", options: ["Bus", "Trein", "Straat", "Kar"], a: "Trein" }, { type: "type", q: "Type the Afrikaans word for 'Street'", a: "Straat" }, { type: "mcq", q: "Translate: 'Bus'", options: ["Kar", "Trein", "Bus", "Straat"], a: "Bus" }, { type: "listen", q: "Type what you hear:", a: "Trein" }] }
 ];
 
-let userData = JSON.parse(localStorage.getItem('taaltrek_data')) || { stars: 0, completed: [] };
+let userData = JSON.parse(localStorage.getItem('taaltrek_data')) || { stars: 24, completed: ["l1"] };
 let currentLessonData = null;
 let currentQuestionIndex = 0;
 let sessionScore = 0;
 let lastSpokenWord = "";
 
 const screens = { 
-    home: document.getElementById('home-screen'), 
+    home: document.getElementById('main-screen'), 
     study: document.getElementById('study-screen'), 
     lesson: document.getElementById('lesson-screen'), 
-    game: document.getElementById('game-screen'),
     result: document.getElementById('result-screen') 
 };
 
-const totalStarsDisplay = document.getElementById('total-stars');
-const beginnerMenu = document.getElementById('beginner-menu');
-const intermediateMenu = document.getElementById('intermediate-menu');
-const fluentMenu = document.getElementById('fluent-menu');
+const xpDisplay = document.getElementById('xp-display');
 const vocabList = document.getElementById('vocab-list');
-
-const optionsContainer = document.getElementById('options-container');
-const typingArea = document.getElementById('typing-area');
-const typingInput = document.getElementById('typing-input');
-const checkTypingBtn = document.getElementById('check-typing-btn');
-const largePlayBtn = document.getElementById('large-play-btn');
-
+const interactionArea = document.getElementById('interaction-area');
 const questionText = document.getElementById('question-text');
+const questionNumber = document.getElementById('question-number');
 const feedbackArea = document.getElementById('feedback-area');
 const feedbackText = document.getElementById('feedback-text');
-const nextBtn = document.getElementById('next-btn');
-const replayBtn = document.getElementById('replay-audio-btn');
 const progressFill = document.getElementById('progress-fill');
 
 function playAudio(text) {
@@ -70,17 +47,19 @@ function playAudio(text) {
     }
 }
 
-largePlayBtn.onclick = () => playAudio(lastSpokenWord);
-replayBtn.onclick = () => playAudio(lastSpokenWord);
-
-function updateHeader() { totalStarsDisplay.innerText = userData.stars; }
-
-function showScreen(screenName) {
-    Object.values(screens).forEach(s => s.classList.remove('active'));
-    screens[screenName].classList.add('active');
+function updateHeader() { 
+    if (xpDisplay) xpDisplay.innerText = `⭐ ${userData.stars}`; 
 }
 
-// Tab Switching Logic for Homepage
+function showScreen(screenName) {
+    Object.values(screens).forEach(s => {
+        if (s) s.classList.remove('active');
+    });
+    if (screens[screenName]) {
+        screens[screenName].classList.add('active');
+    }
+}
+
 window.switchTab = function(tabName) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -94,34 +73,12 @@ window.switchTab = function(tabName) {
     }
 };
 
-function renderMenus() {
-    if (!beginnerMenu || !intermediateMenu || !fluentMenu) return;
-    
-    beginnerMenu.innerHTML = '';
-    intermediateMenu.innerHTML = '';
-    fluentMenu.innerHTML = '';
-
-    allLessons.forEach((lesson) => {
-        const card = document.createElement('div');
-        card.classList.add('lesson-card');
-        
-        const isCompleted = userData.completed.includes(lesson.id);
-        if (isCompleted) {
-            card.classList.add('completed');
-            card.innerHTML = `<span>${lesson.title}</span> <span class="status-icon">✅</span>`;
-        } else {
-            card.innerHTML = `<span>${lesson.title}</span> <span class="status-icon">➡️</span>`;
-        }
-        
-        card.onclick = () => startStudyPhase(lesson);
-
-        if (lesson.level === 'beginner') beginnerMenu.appendChild(card);
-        else if (lesson.level === 'intermediate') intermediateMenu.appendChild(card);
-        else if (lesson.level === 'fluent') fluentMenu.appendChild(card);
-    });
-}
-
-function startStudyPhase(lesson) {
+window.startLesson = function(lessonNum) {
+    const lesson = allLessons.find(l => l.id === `l${lessonNum}`);
+    if (!lesson) {
+        alert("This lesson is coming soon!");
+        return;
+    }
     currentLessonData = lesson;
     document.getElementById('study-title').innerText = lesson.title;
     vocabList.innerHTML = '';
@@ -140,9 +97,9 @@ function startStudyPhase(lesson) {
         vocabList.appendChild(div);
     });
     showScreen('study');
-}
+};
 
-document.getElementById('start-quiz-btn').onclick = () => {
+window.startQuiz = function() {
     currentQuestionIndex = 0;
     sessionScore = 0;
     showScreen('lesson');
@@ -151,89 +108,84 @@ document.getElementById('start-quiz-btn').onclick = () => {
 
 function loadQuestion() {
     feedbackArea.classList.add('hidden');
-    replayBtn.classList.add('hidden');
-    
-    optionsContainer.classList.add('hidden');
-    typingArea.classList.add('hidden');
-    largePlayBtn.classList.add('hidden');
-    optionsContainer.innerHTML = '';
+    interactionArea.innerHTML = '';
     
     const currentQ = currentLessonData.questions[currentQuestionIndex];
+    questionNumber.innerText = `Question ${currentQuestionIndex + 1} of ${currentLessonData.questions.length}`;
     questionText.innerText = currentQ.q;
     lastSpokenWord = currentQ.a; 
-    progressFill.style.width = `${(currentQuestionIndex / currentLessonData.questions.length) * 100}%`;
+    progressFill.style.width = `${((currentQuestionIndex) / currentLessonData.questions.length) * 100}%`;
 
     if (currentQ.type === 'mcq') {
-        optionsContainer.classList.remove('hidden');
         currentQ.options.forEach(option => {
             const btn = document.createElement('button');
             btn.innerText = option;
             btn.classList.add('option-btn');
             btn.onclick = () => processAnswer(option, currentQ.a, btn);
-            optionsContainer.appendChild(btn);
+            interactionArea.appendChild(btn);
         });
-    } else if (currentQ.type === 'type' || currentQ.type === 'listen') {
-        typingArea.classList.remove('hidden');
-        typingInput.value = '';
-        typingInput.disabled = false;
-        checkTypingBtn.disabled = false;
-        setTimeout(() => typingInput.focus(), 100);
+    } else {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.id = 'typing-input';
+        input.placeholder = 'Type your answer in Afrikaans...';
+        
+        const submitBtn = document.createElement('button');
+        submitBtn.innerText = 'Check Answer';
+        submitBtn.classList.add('primary-btn');
+        submitBtn.style.marginTop = '10px';
+
+        submitBtn.onclick = () => {
+            const val = input.value.trim();
+            if (!val) return;
+            processAnswer(val, currentQ.a, null, input);
+        };
+
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') submitBtn.click();
+        });
+
+        interactionArea.appendChild(input);
+        interactionArea.appendChild(submitBtn);
+        setTimeout(() => input.focus(), 100);
 
         if (currentQ.type === 'listen') {
-            largePlayBtn.classList.remove('hidden');
-            playAudio(currentQ.a); 
+            playAudio(currentQ.a);
         }
     }
 }
 
-checkTypingBtn.onclick = () => {
-    const userInput = typingInput.value.trim();
-    if (!userInput) return;
-    const currentQ = currentLessonData.questions[currentQuestionIndex];
-    processAnswer(userInput, currentQ.a, null);
-};
-
-typingInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter' && !checkTypingBtn.disabled) checkTypingBtn.click();
-});
-
-document.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter' && !feedbackArea.classList.contains('hidden')) nextBtn.click();
-});
-
-function processAnswer(selected, correct, clickedBtn) {
+function processAnswer(selected, correct, clickedBtn, inputElem) {
     const isCorrect = selected.trim().toLowerCase() === correct.trim().toLowerCase();
     
-    checkTypingBtn.disabled = true;
-    typingInput.disabled = true;
-    const allBtns = optionsContainer.querySelectorAll('.option-btn');
+    const allBtns = interactionArea.querySelectorAll('button');
     allBtns.forEach(b => b.disabled = true);
+    if (inputElem) inputElem.disabled = true;
 
     if (isCorrect) {
         if (clickedBtn) clickedBtn.classList.add('correct');
-        else typingInput.classList.add('correct');
-        
+        if (inputElem) inputElem.classList.add('correct');
         feedbackText.innerText = "Correct! 🎉";
-        feedbackText.style.color = "#2f855a";
+        feedbackText.style.color = "#007749";
         sessionScore++;
     } else {
         if (clickedBtn) clickedBtn.classList.add('wrong');
-        else typingInput.style.borderColor = "#f56565";
+        if (inputElem) inputElem.style.borderColor = "#e03c31";
+        feedbackText.innerText = `Incorrect. Correct answer: ${correct}`;
+        feedbackText.style.color = "#e03c31";
         
-        feedbackText.innerText = `Incorrect. Answer: ${lastSpokenWord}`;
-        feedbackText.style.color = "#c53030";
-        
-        allBtns.forEach(b => { if (b.innerText.trim().toLowerCase() === correct.trim().toLowerCase()) b.classList.add('correct'); });
+        allBtns.forEach(b => { 
+            if (b.innerText.trim().toLowerCase() === correct.trim().toLowerCase()) {
+                b.classList.add('correct');
+            } 
+        });
     }
     
-    playAudio(lastSpokenWord);
-    replayBtn.classList.remove('hidden');
+    playAudio(correct);
     feedbackArea.classList.remove('hidden');
 }
 
-nextBtn.onclick = () => {
-    typingInput.style.borderColor = "#cbd5e0"; 
-    typingInput.classList.remove('correct');
+window.nextQuestion = function() {
     currentQuestionIndex++;
     if (currentQuestionIndex < currentLessonData.questions.length) {
         loadQuestion();
@@ -245,83 +197,21 @@ nextBtn.onclick = () => {
 function finishLesson() {
     progressFill.style.width = '100%';
     userData.stars += sessionScore;
-    if (!userData.completed.includes(currentLessonData.id) && sessionScore === currentLessonData.questions.length) {
+    if (!userData.completed.includes(currentLessonData.id)) {
         userData.completed.push(currentLessonData.id);
     }
     localStorage.setItem('taaltrek_data', JSON.stringify(userData));
     updateHeader();
-    document.getElementById('score-text').innerText = `${sessionScore}/${currentLessonData.questions.length}`;
-    document.getElementById('earned-stars').innerText = sessionScore;
+    document.getElementById('result-stats').innerText = `You earned +${sessionScore} XP! Total Stars: ${userData.stars}`;
     showScreen('result');
 }
 
-// --- Mini-Game Logic ---
-window.startMatchingGame = function() {
-    showScreen('game');
-    const board = document.getElementById('game-board');
-    board.innerHTML = '';
-
-    const sampleVocab = allLessons[0].vocab;
-    let tiles = [];
-    sampleVocab.forEach(item => {
-        tiles.push({ text: item.af, matchKey: item.af });
-        tiles.push({ text: item.en, matchKey: item.af });
-    });
-
-    tiles.sort(() => Math.random() - 0.5);
-
-    let firstSelection = null;
-    let matchesFound = 0;
-
-    tiles.forEach(tileData => {
-        const tile = document.createElement('div');
-        tile.classList.add('game-tile');
-        tile.innerText = tileData.text;
-        
-        tile.onclick = () => {
-            if (tile.classList.contains('matched') || tile.classList.contains('selected')) return;
-            
-            playAudio(tileData.text);
-            tile.classList.add('selected');
-
-            if (!firstSelection) {
-                firstSelection = { tile, matchKey: tileData.matchKey };
-            } else {
-                if (firstSelection.matchKey === tileData.matchKey && firstSelection.tile !== tile) {
-                    firstSelection.tile.classList.add('matched');
-                    tile.classList.add('matched');
-                    firstSelection = null;
-                    matchesFound++;
-
-                    if (matchesFound === sampleVocab.length) {
-                        setTimeout(() => {
-                            alert("You won the mini-game! ⭐ +3 stars");
-                            userData.stars += 3;
-                            localStorage.setItem('taaltrek_data', JSON.stringify(userData));
-                            updateHeader();
-                            showScreen('home');
-                        }, 300);
-                    }
-                } else {
-                    let prev = firstSelection.tile;
-                    setTimeout(() => {
-                        prev.classList.remove('selected');
-                        tile.classList.remove('selected');
-                    }, 500);
-                    firstSelection = null;
-                }
-            }
-        };
-        board.appendChild(tile);
-    });
-};
-
-document.getElementById('quit-game-btn').onclick = () => showScreen('home');
-
-document.getElementById('home-btn').onclick = () => {
-    renderMenus();
+window.returnHome = function() {
     showScreen('home');
 };
 
+window.startMatchingGame = function() {
+    alert("Matching Pairs mini-game coming up next! Keep practicing your lessons to unlock more.");
+};
+
 updateHeader();
-renderMenus();
