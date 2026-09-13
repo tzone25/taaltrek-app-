@@ -1,0 +1,16 @@
+{
+    "name": "TaalTrek Afrikaans",
+    "short_name": "TaalTrek",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f7f9fc",
+    "theme_color": "#dd6b20",
+    "description": "Learn Afrikaans basics.",
+    "icons": [
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/192px-Flag_of_South_Africa.svg.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
