@@ -9,13 +9,16 @@
 </head>
 <body>
     <div class="app-container">
+        <!-- Persistent Header -->
+        <header id="app-header">
+            <div class="logo">🇿🇦 TaalTrek</div>
+            <div class="stats">⭐ <span id="total-stars">0</span></div>
+        </header>
+
         <!-- Home Screen -->
         <div id="home-screen" class="screen active">
-            <h1>🇿🇦 TaalTrek</h1>
-            <p>Choose a lesson to begin:</p>
-            <div id="lesson-menu">
-                <!-- Lesson buttons will be automatically injected here -->
-            </div>
+            <h2>Kies 'n Les (Choose a Lesson)</h2>
+            <div id="lesson-menu"></div>
         </div>
 
         <!-- Lesson Screen -->
@@ -31,8 +34,9 @@
 
         <!-- Result Screen -->
         <div id="result-screen" class="screen">
-            <h2>Lesson Complete! 🎉</h2>
-            <p>You scored <span id="score-text">0</span></p>
+            <h2>Les Voltooi! (Lesson Complete!) 🎉</h2>
+            <p>You scored <span id="score-text">0</span> correct.</p>
+            <p>⭐ +<span id="earned-stars">0</span> stars added!</p>
             <button id="home-btn" class="primary-btn">Back to Menu</button>
         </div>
     </div>
