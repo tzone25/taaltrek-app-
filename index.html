@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaalTrek - Afrikaans Learning App</title>
+    <title>TaalTrek - Complete Afrikaans Mastery Course</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background: linear-gradient(135deg, #007749 0%, #001489 100%); color: #2d3748; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 10px; }
@@ -58,7 +58,7 @@
     <div class="app-container">
         <header id="app-header">
             <div class="logo">🇿🇦 TaalTrek</div>
-            <div class="stats" id="xp-display">⭐ 24</div>
+            <div class="stats" id="xp-display">⭐ 50</div>
         </header>
 
         <div id="main-screen" class="screen active">
@@ -71,25 +71,37 @@
             <div class="screen-scroll-content">
                 <div id="lessons-tab" class="tab-content active">
                     <div class="level-section">
-                        <h3>🌱 Beginner Essentials</h3>
-                        <div class="lesson-grid" id="beginner-grid"></div>
+                        <h3>🌱 Module 1: Foundations</h3>
+                        <div class="lesson-grid" id="mod1-grid"></div>
                     </div>
                     <div class="level-section">
-                        <h3>🌿 Intermediate Life & Culture</h3>
-                        <div class="lesson-grid" id="intermediate-grid"></div>
+                        <h3>🌿 Module 2: Daily Life & Travel</h3>
+                        <div class="lesson-grid" id="mod2-grid"></div>
+                    </div>
+                    <div class="level-section">
+                        <h3>🌳 Module 3: Intermediate Routine</h3>
+                        <div class="lesson-grid" id="mod3-grid"></div>
+                    </div>
+                    <div class="level-section">
+                        <h3>🔥 Module 4: Advanced Grammar</h3>
+                        <div class="lesson-grid" id="mod4-grid"></div>
+                    </div>
+                    <div class="level-section">
+                        <h3>⚡ Module 5: Idioms & Fluency</h3>
+                        <div class="lesson-grid" id="mod5-grid"></div>
                     </div>
                 </div>
 
                 <div id="flashcards-tab" class="tab-content">
                     <h3 style="color:#001489; font-size:0.95rem; margin-bottom:4px;">Spaced Repetition Queue</h3>
-                    <p style="font-size:0.82rem; color:#64748b; margin-bottom:10px;">Review words you've missed in lessons:</p>
+                    <p style="font-size:0.82rem; color:#64748b; margin-bottom:10px;">Review items and core phrases:</p>
                     <div id="flashcard-queue" style="display:flex; flex-direction:column; gap:10px;"></div>
                 </div>
 
                 <div id="games-tab" class="tab-content">
                     <div class="game-card" onclick="startMatchingGame()">
                         <h4>🧩 Matching Pairs</h4>
-                        <p>Match Afrikaans words with their English translations to score bonus XP!</p>
+                        <p>Match Afrikaans words with English translations for bonus XP!</p>
                     </div>
                 </div>
             </div>
@@ -130,111 +142,149 @@
 
     <script>
         const allLessons = [
+            // MODULE 1
             { 
-                id: "l1", level: "beginner", title: "1. Greetings & Introductions", 
-                dialogue: [
-                    { af: "Hallo, goeiemôre! Hoe gaan dit?", en: "Hello, good morning! How are you?", speaker: "Jan" },
-                    { af: "Baie goed, dankie. En met jou?", en: "Very well, thank you. And with you?", speaker: "Sanna" }
-                ],
-                vocab: [
-                    { af: "Goeiemôre", en: "Good morning" }, 
-                    { af: "Hoe gaan dit?", en: "How are you?" }, 
-                    { af: "Baie goed", en: "Very well" },
-                    { af: "Dankie", en: "Thank you" }
-                ], 
+                id: "l1", module: 1, title: "1. Greetings & Introductions", 
+                dialogue: [{ af: "Hallo, goeiemôre! Hoe gaan dit?", en: "Hello, good morning! How are you?", speaker: "Jan" }],
+                vocab: [{ af: "Goeiemôre", en: "Good morning" }, { af: "Hoe gaan dit?", en: "How are you?" }, { af: "Dankie", en: "Thank you" }], 
                 questions: [
                     { type: "mcq", q: "Translate: 'Goeiemôre'", options: ["Good morning", "Good night", "Goodbye", "Hello"], a: "Good morning" },
-                    { type: "mcq", q: "What does 'Hoe gaan dit?' mean?", options: ["How are you?", "Who are you?", "Where are you?", "How old are you?"], a: "How are you?" },
                     { type: "type", q: "Type the Afrikaans word for 'Thank you'", a: "Dankie" }
                 ] 
             },
             { 
-                id: "l2", level: "beginner", title: "2. Essential Courtesies & Politeness", 
-                dialogue: [
-                    { af: "Asseblief, kan ek 'n koppie koffie kry?", en: "Please, can I get a cup of coffee?", speaker: "Klant" },
-                    { af: "Natuurlik, dadelik!", en: "Of course, right away!", speaker: "Kelner" }
-                ],
-                vocab: [
-                    { af: "Asseblief", en: "Please / Here you go" }, 
-                    { af: "Koffie", en: "Coffee" }, 
-                    { af: "Natuurlik", en: "Of course" },
-                    { af: "Jammer", en: "Sorry" }
-                ], 
+                id: "l2", module: 1, title: "2. Essential Courtesies", 
+                dialogue: [{ af: "Asseblief, kan ek 'n koppie koffie kry?", en: "Please, can I get a cup of coffee?", speaker: "Klant" }],
+                vocab: [{ af: "Asseblief", en: "Please" }, { af: "Koffie", en: "Coffee" }, { af: "Jammer", en: "Sorry" }], 
                 questions: [
                     { type: "mcq", q: "What does 'Asseblief' mean?", options: ["Please", "Thank you", "Sorry", "Yes"], a: "Please" },
-                    { type: "mcq", q: "Translate: 'Natuurlik'", options: ["Of course", "Never", "Maybe", "Thanks"], a: "Of course" },
                     { type: "type", q: "Type the Afrikaans word for 'Sorry'", a: "Jammer" }
                 ] 
             },
             { 
-                id: "l3", level: "beginner", title: "3. Numbers 1 to 10", 
-                dialogue: [
-                    { af: "Hoeveel kos dit? Dit kos tien rand.", en: "How much does this cost? It costs ten rand.", speaker: "Koper" }
-                ],
-                vocab: [
-                    { af: "Een, twee, drie", en: "One, two, three" }, 
-                    { af: "Vier, vyf, ses", en: "Four, five, six" }, 
-                    { af: "Sewe, agt, nege, tien", en: "Seven, eight, nine, ten" }
-                ], 
+                id: "l3", module: 1, title: "3. Numbers & Money", 
+                dialogue: [{ af: "Dit kos tien rand.", en: "It costs ten rand.", speaker: "Koper" }],
+                vocab: [{ af: "Een", en: "One" }, { af: "Tien", en: "Ten" }, { af: "Rand", en: "Rand currency" }], 
                 questions: [
                     { type: "mcq", q: "What is 'Een' in English?", options: ["One", "Eight", "Ten", "Three"], a: "One" },
                     { type: "type", q: "Type the Afrikaans word for 'Ten'", a: "Tien" }
                 ] 
             },
+            // MODULE 2
             { 
-                id: "l4", level: "beginner", title: "4. Food & Restaurant Ordering", 
-                dialogue: [
-                    { af: "Ek wil graag 'n boereworsrol en water bestel.", en: "I would like to order a boerewors roll and water.", speaker: "Tois" },
-                    { af: "Wil jy dit met uie hê?", en: "Would you like it with onions?", speaker: "Verkoper" }
-                ],
-                vocab: [
-                    { af: "Water", en: "Water" }, 
-                    { af: "Kos", en: "Food" }, 
-                    { af: "Eet", en: "Eat" },
-                    { af: "Drink", en: "Drink" }
-                ], 
+                id: "l4", module: 2, title: "4. Food & Dining Out", 
+                dialogue: [{ af: "Ek wil graag water bestel.", en: "I would like to order water.", speaker: "Tois" }],
+                vocab: [{ af: "Water", en: "Water" }, { af: "Kos", en: "Food" }, { af: "Eet", en: "Eat" }], 
                 questions: [
                     { type: "mcq", q: "What does 'Water' mean?", options: ["Water", "Wine", "Milk", "Beer"], a: "Water" },
                     { type: "type", q: "Type the Afrikaans word for 'Food'", a: "Kos" }
                 ] 
             },
             { 
-                id: "l5", level: "intermediate", title: "5. Asking Directions & Travel", 
-                dialogue: [
-                    { af: "Waar is die naaste strand, asseblief?", en: "Where is the nearest beach, please?", speaker: "Toeris" },
-                    { af: "Draai regs by die volgende verkeerslig.", en: "Turn right at the next traffic light.", speaker: "Inwoner" }
-                ],
-                vocab: [
-                    { af: "Waar", en: "Where" }, 
-                    { af: "Regs", en: "Right" }, 
-                    { af: "Links", en: "Left" },
-                    { af: "Strate", en: "Streets" }
-                ], 
+                id: "l5", module: 2, title: "5. Asking Directions", 
+                dialogue: [{ af: "Waar is die naaste straat?", en: "Where is the nearest street?", speaker: "Toeris" }],
+                vocab: [{ af: "Waar", en: "Where" }, { af: "Regs", en: "Right" }, { af: "Links", en: "Left" }], 
                 questions: [
                     { type: "mcq", q: "What does 'Waar' mean?", options: ["Where", "When", "Who", "Why"], a: "Where" },
                     { type: "type", q: "Type the Afrikaans word for 'Right'", a: "Regs" }
                 ] 
             },
             { 
-                id: "l6", level: "intermediate", title: "6. Weather & Outdoor Life", 
-                dialogue: [
-                    { af: "Dit is vandag baie warm in Kaapstad!", en: "It is very hot today in Cape Town!", speaker: "Mia" },
-                    { af: "Ja, maar môre reën dit sekerlik.", en: "Yes, but tomorrow it will surely rain.", speaker: "Liam" }
-                ],
-                vocab: [
-                    { af: "Warm", en: "Hot" }, 
-                    { af: "Koud", en: "Cold" }, 
-                    { af: "Reën", en: "Rain" },
-                    { af: "Son", en: "Sun" }
-                ], 
+                id: "l6", module: 2, title: "6. Weather & Climate", 
+                dialogue: [{ af: "Dit is vandag baie warm.", en: "It is very hot today.", speaker: "Mia" }],
+                vocab: [{ af: "Warm", en: "Hot" }, { af: "Koud", en: "Cold" }, { af: "Reën", en: "Rain" }], 
                 questions: [
                     { type: "mcq", q: "What does 'Warm' mean?", options: ["Hot", "Cold", "Windy", "Dry"], a: "Hot" },
                     { type: "type", q: "Type the Afrikaans word for 'Rain'", a: "Reën" }
                 ] 
+            },
+            // MODULE 3
+            { 
+                id: "l7", module: 3, title: "7. Family & Relationships", 
+                dialogue: [{ af: "Dit is my broer en my suster.", en: "This is my brother and my sister.", speaker: "Anna" }],
+                vocab: [{ af: "Pa", en: "Dad" }, { af: "Ma", en: "Mom" }, { af: "Broer", en: "Brother" }], 
+                questions: [
+                    { type: "mcq", q: "What is 'Broer' in English?", options: ["Brother", "Sister", "Father", "Mother"], a: "Brother" },
+                    { type: "type", q: "Type the Afrikaans word for 'Mom'", a: "Ma" }
+                ] 
+            },
+            { 
+                id: "l8", module: 3, title: "8. Hobbies & Free Time", 
+                dialogue: [{ af: "Hou jy daarvan om musiek te luister?", en: "Do you like listening to music?", speaker: "Jan" }],
+                vocab: [{ af: "Speel", en: "Play" }, { af: "Lees", en: "Read" }, { af: "Musiek", en: "Music" }], 
+                questions: [
+                    { type: "mcq", q: "What does 'Lees' mean?", options: ["Read", "Write", "Listen", "Speak"], a: "Read" },
+                    { type: "type", q: "Type the Afrikaans word for 'Play'", a: "Speel" }
+                ] 
+            },
+            { 
+                id: "l9", module: 3, title: "9. Shopping & Clothes", 
+                dialogue: [{ af: "Hierdie winkel is te duur.", en: "This shop is too expensive.", speaker: "Klaas" }],
+                vocab: [{ af: "Winkel", en: "Shop" }, { af: "Duur", en: "Expensive" }, { af: "Goedkoop", en: "Cheap" }], 
+                questions: [
+                    { type: "mcq", q: "What does 'Duur' mean?", options: ["Expensive", "Cheap", "Big", "Small"], a: "Expensive" },
+                    { type: "type", q: "Type the Afrikaans word for 'Shop'", a: "Winkel" }
+                ] 
+            },
+            // MODULE 4
+            { 
+                id: "l10", module: 4, title: "10. Past Tense Sentences", 
+                dialogue: [{ af: "Ons het gister hard gewerk.", en: "We worked hard yesterday.", speaker: "Pieter" }],
+                vocab: [{ af: "Het ... gewerk", en: "Worked" }, { af: "Gister", en: "Yesterday" }, { af: "Gegaan", en: "Gone" }], 
+                questions: [
+                    { type: "mcq", q: "What auxiliary verb indicates past tense?", options: ["Het", "Sal", "Kan", "Moet"], a: "Het" },
+                    { type: "type", q: "Type the Afrikaans word for 'Yesterday'", a: "Gister" }
+                ] 
+            },
+            { 
+                id: "l11", module: 4, title: "11. Future Tense & Modals", 
+                dialogue: [{ af: "Ek sal môre jou e-pos beantwoord.", en: "I will answer your email tomorrow.", speaker: "Sarie" }],
+                vocab: [{ af: "Sal", en: "Shall/Will" }, { af: "Moet", en: "Must" }, { af: "Kan", en: "Can" }], 
+                questions: [
+                    { type: "mcq", q: "Which modal verb means 'Will / Shall'?", options: ["Sal", "Het", "Was", "Is"], a: "Sal" },
+                    { type: "type", q: "Type the Afrikaans word for 'Must'", a: "Moet" }
+                ] 
+            },
+            { 
+                id: "l12", module: 4, title: "12. Work & Office Life", 
+                dialogue: [{ af: "Die vergadering begin om negeuur.", en: "The meeting starts at nine o'clock.", speaker: "Manager" }],
+                vocab: [{ af: "Werk", en: "Work" }, { af: "Vergadering", en: "Meeting" }, { af: "Baas", en: "Boss" }], 
+                questions: [
+                    { type: "mcq", q: "What does 'Vergadering' mean?", options: ["Meeting", "Break", "Office", "Contract"], a: "Meeting" },
+                    { type: "type", q: "Type the Afrikaans word for 'Work'", a: "Werk" }
+                ] 
+            },
+            // MODULE 5
+            { 
+                id: "l13", module: 5, title: "13. Idioms & Expressions", 
+                dialogue: [{ af: "Ag man, moenie worry nie, alles loop vol plan!", en: "Oh man, don't worry, everything goes to plan!", speaker: "Bettie" }],
+                vocab: [{ af: "Ag man!", en: "Oh man!" }, { af: "Alles", en: "Everything" }, { af: "Plan", en: "Plan" }], 
+                questions: [
+                    { type: "mcq", q: "What does 'Alles' mean?", options: ["Everything", "Nothing", "Something", "Anything"], a: "Everything" },
+                    { type: "type", q: "Type the expression for 'Oh man!'", a: "Ag man" }
+                ] 
+            },
+            { 
+                id: "l14", module: 5, title: "14. Storytelling & Narratives", 
+                dialogue: [{ af: "Toe het hy die hele verhaal vertel.", en: "Then he told the whole story.", speaker: "Oupa" }],
+                vocab: [{ af: "Toe", en: "Then / When" }, { af: "Verhaal", en: "Story" }, { af: "Droom", en: "Dream" }], 
+                questions: [
+                    { type: "mcq", q: "What does 'Verhaal' mean?", options: ["Story", "Song", "Book", "Poem"], a: "Story" },
+                    { type: "type", q: "Type the Afrikaans word for 'Then'", a: "Toe" }
+                ] 
+            },
+            { 
+                id: "l15", module: 5, title: "15. Advanced Fluency & Debate", 
+                dialogue: [{ af: "Ek stem saam met jou opinie.", en: "I agree with your opinion.", speaker: "Expert" }],
+                vocab: [{ af: "Opinie", en: "Opinion" }, { af: "Saamstem", en: "Agree" }, { af: "Verskil", en: "Differ" }], 
+                questions: [
+                    { type: "mcq", q: "What does 'Saamstem' mean?", options: ["Agree", "Disagree", "Argue", "Conclude"], a: "Agree" },
+                    { type: "type", q: "Type the Afrikaans word for 'Opinion'", a: "Opinie" }
+                ] 
             }
         ];
 
-        let userData = JSON.parse(localStorage.getItem('taaltrek_data')) || { stars: 24, completed: [], weakWords: [] };
+        let userData = JSON.parse(localStorage.getItem('taaltrek_data')) || { stars: 50, completed: [], weakWords: [] };
         let currentLessonData = null;
         let currentQuestionIndex = 0;
         let sessionScore = 0;
@@ -247,21 +297,18 @@
         };
 
         function renderDashboardGrids() {
-            const bGrid = document.getElementById('beginner-grid');
-            const iGrid = document.getElementById('intermediate-grid');
-            if (!bGrid || !iGrid) return;
-            
-            bGrid.innerHTML = ''; iGrid.innerHTML = '';
-
-            allLessons.forEach(l => {
-                const card = document.createElement('div');
-                card.classList.add('lesson-card');
-                card.innerHTML = `<span>${l.title}</span><span>➡️</span>`;
-                card.onclick = () => startLesson(l.id);
-                
-                if (l.level === 'beginner') bGrid.appendChild(card);
-                else iGrid.appendChild(card);
-            });
+            for (let i = 1; i <= 5; i++) {
+                const grid = document.getElementById(`mod${i}-grid`);
+                if (!grid) continue;
+                grid.innerHTML = '';
+                allLessons.filter(l => l.module === i).forEach(l => {
+                    const card = document.createElement('div');
+                    card.classList.add('lesson-card');
+                    card.innerHTML = `<span>${l.title}</span><span>➡️</span>`;
+                    card.onclick = () => startLesson(l.id);
+                    grid.appendChild(card);
+                });
+            }
         }
 
         function playAudio(text, slow = false) {
@@ -449,13 +496,13 @@
         function loadSmartFlashcards() {
             const container = document.getElementById('flashcard-queue');
             if (!container) return;
-            container.innerHTML = `<p style="text-align:center; color:#718096; font-size:0.9rem;">Review items will appear here.</p>`;
+            container.innerHTML = `<p style="text-align:center; color:#718096; font-size:0.9rem;">Review items and missed concepts will populate here dynamically.</p>`;
         }
 
         window.startMatchingGame = function() {
             showScreen('lesson');
             document.getElementById('question-number').innerText = "Mini-Game: Matching Pairs";
-            document.getElementById('question-text').innerText = "Match terms!";
+            document.getElementById('question-text').innerText = "Match core terms!";
             document.getElementById('progress-fill').style.width = '100%';
             document.getElementById('interaction-area').innerHTML = '<div id="game-board"></div>';
             
