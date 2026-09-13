@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TaalTrek - Learn Afrikaans</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="app-container">
+        <div id="home-screen" class="screen active">
+            <h1>🇿🇦 TaalTrek</h1>
+            <p>Master Afrikaans, one step at a time.</p>
+            <button id="start-btn" class="primary-btn">Start Lesson 1: Basics</button>
+        </div>
+
+        <div id="lesson-screen" class="screen">
+            <div class="progress-bar"><div id="progress-fill"></div></div>
+            <h2 id="question-text">Question</h2>
+            <div id="options-container"></div>
+            <div id="feedback-area" class="hidden">
+                <h3 id="feedback-text"></h3>
+                <button id="next-btn" class="primary-btn">Next</button>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <h2>Lesson Complete! 🎉</h2>
+            <p>You scored <span id="score-text">0</span>/5</p>
+            <button id="home-btn" class="primary-btn">Back to Menu</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
