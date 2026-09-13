@@ -44,9 +44,7 @@ body {
     text-align: center;
 }
 
-.screen.active {
-    display: flex;
-}
+.screen.active { display: flex; }
 
 #home-screen h2 { margin-top: 0; color: #2d3748; font-size: 1.4rem; }
 
@@ -55,6 +53,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    padding-bottom: 2rem;
 }
 
 .primary-btn, .option-btn {
@@ -70,8 +69,6 @@ body {
 
 .primary-btn { background-color: #dd6b20; color: white; }
 .primary-btn:active { background-color: #c05621; transform: scale(0.98); }
-
-/* Completed Lesson Style */
 .primary-btn.completed { background-color: #48bb78; }
 
 .option-btn {
@@ -101,14 +98,34 @@ body {
 }
 
 #feedback-area {
-    margin-top: 20px;
+    margin-top: auto;
     width: 100%;
     background: #f7fafc;
     padding: 15px;
     border-radius: 12px;
     border: 2px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-#feedback-text { margin-top: 0; }
+.feedback-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#feedback-text { margin: 0; font-size: 1.2rem; }
+
+.icon-btn {
+    background: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.icon-btn:active { background: #2b6cb0; }
 
 .hidden { display: none !important; }
