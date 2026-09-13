@@ -1,107 +1,169 @@
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-}
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 
-// 10-Lesson Curriculum
 const allLessons = [
     {
-        id: "lesson_1", title: "1. Basics & Greetings",
+        id: "l1", title: "1. Basics",
+        vocab: [{af: "Hallo", en: "Hello"}, {af: "Ja", en: "Yes"}, {af: "Nee", en: "No"}, {af: "Dankie", en: "Thank you"}],
         questions: [
-            { question: "How do you say 'Hello'?", options: ["Hallo", "Dankie", "Ja", "Nee"], answer: "Hallo" },
-            { question: "Select the word for 'Thank you'", options: ["Totsiens", "Dankie", "Asseblief", "Goeiemôre"], answer: "Dankie" },
-            { question: "Translate: 'Yes'", options: ["Nee", "Dankie", "Ja", "Hond"], answer: "Ja" },
-            { question: "How do you say 'Goodbye'?", options: ["Hallo", "Water", "Totsiens", "Nee"], answer: "Totsiens" },
-            { question: "Translate: 'Please'", options: ["Dankie", "Asseblief", "Ja", "Hallo"], answer: "Asseblief" }
+            { type: "mcq", q: "Translate: 'Hello'", options: ["Hallo", "Ja", "Nee", "Dankie"], a: "Hallo" },
+            { type: "type", q: "Type the Afrikaans word for 'Yes'", a: "Ja" },
+            { type: "listen", q: "Type what you hear:", a: "Nee" },
+            { type: "mcq", q: "Translate: 'Thank you'", options: ["Dankie", "Ja", "Hallo", "Nee"], a: "Dankie" },
+            { type: "type", q: "Translate: 'Hello'", a: "Hallo" }
         ]
     },
     {
-        id: "lesson_2", title: "2. Numbers 1-5",
+        id: "l2", title: "2. Greetings",
+        vocab: [{af: "Totsiens", en: "Goodbye"}, {af: "Goeiemôre", en: "Good morning"}, {af: "Asseblief", en: "Please"}, {af: "Goed", en: "Good"}],
         questions: [
-            { question: "Translate: 'One'", options: ["Drie", "Twee", "Een", "Vyf"], answer: "Een" },
-            { question: "Translate: 'Two'", options: ["Twee", "Vier", "Ses", "Tien"], answer: "Twee" },
-            { question: "Translate: 'Three'", options: ["Drie", "Sewe", "Ag", "Nege"], answer: "Drie" },
-            { question: "How do you say 'Four'?", options: ["Vyf", "Vier", "Nul", "Twee"], answer: "Vier" },
-            { question: "Translate: 'Five'", options: ["Een", "Vyf", "Drie", "Tien"], answer: "Vyf" }
+            { type: "mcq", q: "Translate: 'Good morning'", options: ["Totsiens", "Goeiemôre", "Goed", "Asseblief"], a: "Goeiemôre" },
+            { type: "listen", q: "Type what you hear:", a: "Asseblief" },
+            { type: "type", q: "Type the Afrikaans word for 'Goodbye'", a: "Totsiens" },
+            { type: "mcq", q: "Translate: 'Good'", options: ["Goed", "Totsiens", "Ja", "Nee"], a: "Goed" },
+            { type: "listen", q: "Type what you hear:", a: "Goeiemôre" }
         ]
     },
     {
-        id: "lesson_3", title: "3. Animals",
+        id: "l3", title: "3. Numbers 1-5",
+        vocab: [{af: "Een", en: "One"}, {af: "Twee", en: "Two"}, {af: "Drie", en: "Three"}, {af: "Vier", en: "Four"}, {af: "Vyf", en: "Five"}],
         questions: [
-            { question: "Translate: 'Dog'", options: ["Kat", "Hond", "Voël", "Vis"], answer: "Hond" },
-            { question: "Translate: 'Cat'", options: ["Muis", "Hond", "Kat", "Koei"], answer: "Kat" },
-            { question: "Translate: 'Bird'", options: ["Voël", "Slang", "Vis", "Perd"], answer: "Voël" },
-            { question: "How do you say 'Fish'?", options: ["Vis", "Kat", "Hond", "Vark"], answer: "Vis" },
-            { question: "Translate: 'Horse'", options: ["Skaap", "Perd", "Bok", "Voël"], answer: "Perd" }
+            { type: "mcq", q: "Translate: 'Three'", options: ["Een", "Twee", "Drie", "Vyf"], a: "Drie" },
+            { type: "type", q: "Type the Afrikaans word for 'One'", a: "Een" },
+            { type: "listen", q: "Type what you hear:", a: "Vier" },
+            { type: "mcq", q: "Translate: 'Five'", options: ["Vyf", "Vier", "Twee", "Een"], a: "Vyf" },
+            { type: "type", q: "Type the Afrikaans word for 'Two'", a: "Twee" }
         ]
     },
     {
-        id: "lesson_4", title: "4. Colors",
+        id: "l4", title: "4. Animals",
+        vocab: [{af: "Hond", en: "Dog"}, {af: "Kat", en: "Cat"}, {af: "Vis", en: "Fish"}, {af: "Voël", en: "Bird"}],
         questions: [
-            { question: "Translate: 'Red'", options: ["Blou", "Rooi", "Groen", "Geel"], answer: "Rooi" },
-            { question: "Translate: 'Blue'", options: ["Swart", "Wit", "Blou", "Rooi"], answer: "Blou" },
-            { question: "Translate: 'Green'", options: ["Groen", "Geel", "Blou", "Bruin"], answer: "Groen" },
-            { question: "How do you say 'Yellow'?", options: ["Rooi", "Geel", "Wit", "Swart"], answer: "Geel" },
-            { question: "Translate: 'Black'", options: ["Swart", "Wit", "Grys", "Rooi"], answer: "Swart" }
+            { type: "listen", q: "Type what you hear:", a: "Hond" },
+            { type: "mcq", q: "Translate: 'Bird'", options: ["Hond", "Vis", "Voël", "Kat"], a: "Voël" },
+            { type: "type", q: "Type the Afrikaans word for 'Cat'", a: "Kat" },
+            { type: "mcq", q: "Translate: 'Fish'", options: ["Vis", "Kat", "Voël", "Hond"], a: "Vis" },
+            { type: "listen", q: "Type what you hear:", a: "Voël" }
         ]
     },
     {
-        id: "lesson_5", title: "5. Food & Drink",
+        id: "l5", title: "5. Food",
+        vocab: [{af: "Kos", en: "Food"}, {af: "Brood", en: "Bread"}, {af: "Vleis", en: "Meat"}, {af: "Kaas", en: "Cheese"}],
         questions: [
-            { question: "Translate: 'Water'", options: ["Melk", "Koffie", "Water", "Tee"], answer: "Water" },
-            { question: "Translate: 'Food'", options: ["Kos", "Brood", "Vleis", "Water"], answer: "Kos" },
-            { question: "Translate: 'Bread'", options: ["Kaas", "Brood", "Kos", "Melk"], answer: "Brood" },
-            { question: "How do you say 'Meat'?", options: ["Vleis", "Vis", "Kip", "Brood"], answer: "Vleis" },
-            { question: "Translate: 'Milk'", options: ["Water", "Tee", "Koffie", "Melk"], answer: "Melk" }
+            { type: "type", q: "Type the Afrikaans word for 'Bread'", a: "Brood" },
+            { type: "mcq", q: "Translate: 'Cheese'", options: ["Kos", "Vleis", "Kaas", "Brood"], a: "Kaas" },
+            { type: "listen", q: "Type what you hear:", a: "Kos" },
+            { type: "type", q: "Type the Afrikaans word for 'Meat'", a: "Vleis" },
+            { type: "mcq", q: "Translate: 'Food'", options: ["Brood", "Kos", "Kaas", "Vleis"], a: "Kos" }
         ]
     },
     {
-        id: "lesson_6", title: "6. Family",
+        id: "l6", title: "6. Drink",
+        vocab: [{af: "Water", en: "Water"}, {af: "Melk", en: "Milk"}, {af: "Koffie", en: "Coffee"}, {af: "Tee", en: "Tea"}],
         questions: [
-            { question: "Translate: 'Mother'", options: ["Pa", "Ma", "Broer", "Suster"], answer: "Ma" },
-            { question: "Translate: 'Father'", options: ["Oupa", "Ouma", "Ma", "Pa"], answer: "Pa" },
-            { question: "Translate: 'Brother'", options: ["Suster", "Broer", "Pa", "Kind"], answer: "Broer" },
-            { question: "Translate: 'Sister'", options: ["Broer", "Ouma", "Suster", "Ma"], answer: "Suster" },
-            { question: "Translate: 'Grandfather'", options: ["Oupa", "Pa", "Broer", "Ouma"], answer: "Oupa" }
+            { type: "listen", q: "Type what you hear:", a: "Melk" },
+            { type: "type", q: "Type the Afrikaans word for 'Tea'", a: "Tee" },
+            { type: "mcq", q: "Translate: 'Coffee'", options: ["Water", "Tee", "Koffie", "Melk"], a: "Koffie" },
+            { type: "type", q: "Type the Afrikaans word for 'Water'", a: "Water" },
+            { type: "listen", q: "Type what you hear:", a: "Koffie" }
         ]
     },
     {
-        id: "lesson_7", title: "7. Common Verbs",
+        id: "l7", title: "7. Colors",
+        vocab: [{af: "Rooi", en: "Red"}, {af: "Blou", en: "Blue"}, {af: "Groen", en: "Green"}, {af: "Geel", en: "Yellow"}],
         questions: [
-            { question: "Translate: 'To eat'", options: ["Drink", "Eet", "Slaap", "Loop"], answer: "Eet" },
-            { question: "Translate: 'To drink'", options: ["Hardloop", "Sien", "Drink", "Eet"], answer: "Drink" },
-            { question: "Translate: 'To sleep'", options: ["Slaap", "Loop", "Eet", "Lees"], answer: "Slaap" },
-            { question: "Translate: 'To walk'", options: ["Loop", "Hardloop", "Drink", "Staan"], answer: "Loop" },
-            { question: "Translate: 'To run'", options: ["Slaap", "Eet", "Loop", "Hardloop"], answer: "Hardloop" }
+            { type: "mcq", q: "Translate: 'Blue'", options: ["Rooi", "Blou", "Groen", "Geel"], a: "Blou" },
+            { type: "listen", q: "Type what you hear:", a: "Groen" },
+            { type: "type", q: "Type the Afrikaans word for 'Red'", a: "Rooi" },
+            { type: "mcq", q: "Translate: 'Yellow'", options: ["Geel", "Blou", "Groen", "Rooi"], a: "Geel" },
+            { type: "type", q: "Type the Afrikaans word for 'Blue'", a: "Blou" }
         ]
     },
     {
-        id: "lesson_8", title: "8. Days of the Week",
+        id: "l8", title: "8. Family",
+        vocab: [{af: "Ma", en: "Mother"}, {af: "Pa", en: "Father"}, {af: "Broer", en: "Brother"}, {af: "Suster", en: "Sister"}],
         questions: [
-            { question: "Translate: 'Monday'", options: ["Dinsdag", "Maandag", "Sondag", "Vrydag"], answer: "Maandag" },
-            { question: "Translate: 'Tuesday'", options: ["Woensdag", "Dinsdag", "Saterdag", "Maandag"], answer: "Dinsdag" },
-            { question: "Translate: 'Wednesday'", options: ["Donderdag", "Vrydag", "Woensdag", "Dinsdag"], answer: "Woensdag" },
-            { question: "Translate: 'Thursday'", options: ["Donderdag", "Saterdag", "Sondag", "Vrydag"], answer: "Donderdag" },
-            { question: "Translate: 'Friday'", options: ["Saterdag", "Vrydag", "Maandag", "Sondag"], answer: "Vrydag" }
+            { type: "listen", q: "Type what you hear:", a: "Broer" },
+            { type: "mcq", q: "Translate: 'Sister'", options: ["Ma", "Pa", "Broer", "Suster"], a: "Suster" },
+            { type: "type", q: "Type the Afrikaans word for 'Father'", a: "Pa" },
+            { type: "mcq", q: "Translate: 'Mother'", options: ["Ma", "Broer", "Suster", "Pa"], a: "Ma" },
+            { type: "listen", q: "Type what you hear:", a: "Suster" }
         ]
     },
     {
-        id: "lesson_9", title: "9. Feelings",
+        id: "l9", title: "9. Weather",
+        vocab: [{af: "Son", en: "Sun"}, {af: "Reën", en: "Rain"}, {af: "Wind", en: "Wind"}, {af: "Koud", en: "Cold"}],
         questions: [
-            { question: "Translate: 'Happy'", options: ["Hartseer", "Kwaad", "Bly", "Moeg"], answer: "Bly" },
-            { question: "Translate: 'Sad'", options: ["Bly", "Hartseer", "Honger", "Moeg"], answer: "Hartseer" },
-            { question: "Translate: 'Angry'", options: ["Kwaad", "Bly", "Moeg", "Dorst"], answer: "Kwaad" },
-            { question: "Translate: 'Tired'", options: ["Moeg", "Kwaad", "Bly", "Hartseer"], answer: "Moeg" },
-            { question: "Translate: 'Hungry'", options: ["Honger", "Moeg", "Kwaad", "Dorst"], answer: "Honger" }
+            { type: "type", q: "Type the Afrikaans word for 'Rain'", a: "Reën" },
+            { type: "mcq", q: "Translate: 'Cold'", options: ["Son", "Reën", "Wind", "Koud"], a: "Koud" },
+            { type: "listen", q: "Type what you hear:", a: "Wind" },
+            { type: "type", q: "Type the Afrikaans word for 'Sun'", a: "Son" },
+            { type: "mcq", q: "Translate: 'Wind'", options: ["Koud", "Son", "Wind", "Reën"], a: "Wind" }
         ]
     },
     {
-        id: "lesson_10", title: "10. Travel",
+        id: "l10", title: "10. Travel",
+        vocab: [{af: "Kar", en: "Car"}, {af: "Trein", en: "Train"}, {af: "Bus", en: "Bus"}, {af: "Straat", en: "Street"}],
         questions: [
-            { question: "Translate: 'Car'", options: ["Trein", "Kar", "Fiets", "Bus"], answer: "Kar" },
-            { question: "Translate: 'Train'", options: ["Kar", "Vliegtuig", "Trein", "Boot"], answer: "Trein" },
-            { question: "Translate: 'Airplane'", options: ["Boot", "Vliegtuig", "Kar", "Trein"], answer: "Vliegtuig" },
-            { question: "Translate: 'Street'", options: ["Pad", "Straat", "Dorp", "Stad"], answer: "Straat" },
-            { question: "Translate: 'Ticket'", options: ["Kaartjie", "Geld", "Paspoort", "Tas"], answer: "Kaartjie" }
+            { type: "listen", q: "Type what you hear:", a: "Kar" },
+            { type: "mcq", q: "Translate: 'Train'", options: ["Bus", "Trein", "Straat", "Kar"], a: "Trein" },
+            { type: "type", q: "Type the Afrikaans word for 'Street'", a: "Straat" },
+            { type: "mcq", q: "Translate: 'Bus'", options: ["Kar", "Trein", "Bus", "Straat"], a: "Bus" },
+            { type: "listen", q: "Type what you hear:", a: "Trein" }
+        ]
+    },
+    {
+        id: "l11", title: "11. Time",
+        vocab: [{af: "Dag", en: "Day"}, {af: "Nag", en: "Night"}, {af: "Vandag", en: "Today"}, {af: "Môre", en: "Tomorrow"}],
+        questions: [
+            { type: "type", q: "Type the Afrikaans word for 'Today'", a: "Vandag" },
+            { type: "mcq", q: "Translate: 'Night'", options: ["Dag", "Vandag", "Nag", "Môre"], a: "Nag" },
+            { type: "listen", q: "Type what you hear:", a: "Môre" },
+            { type: "type", q: "Type the Afrikaans word for 'Day'", a: "Dag" },
+            { type: "mcq", q: "Translate: 'Tomorrow'", options: ["Môre", "Vandag", "Nag", "Dag"], a: "Môre" }
+        ]
+    },
+    {
+        id: "l12", title: "12. Verbs: Motion",
+        vocab: [{af: "Loop", en: "Walk"}, {af: "Hardloop", en: "Run"}, {af: "Spring", en: "Jump"}, {af: "Staan", en: "Stand"}],
+        questions: [
+            { type: "listen", q: "Type what you hear:", a: "Hardloop" },
+            { type: "mcq", q: "Translate: 'Jump'", options: ["Loop", "Staan", "Spring", "Hardloop"], a: "Spring" },
+            { type: "type", q: "Type the Afrikaans word for 'Walk'", a: "Loop" },
+            { type: "mcq", q: "Translate: 'Stand'", options: ["Staan", "Spring", "Loop", "Hardloop"], a: "Staan" },
+            { type: "listen", q: "Type what you hear:", a: "Loop" }
+        ]
+    },
+    {
+        id: "l13", title: "13. Verbs: Action",
+        vocab: [{af: "Eet", en: "Eat"}, {af: "Drink", en: "Drink"}, {af: "Slaap", en: "Sleep"}, {af: "Werk", en: "Work"}],
+        questions: [
+            { type: "type", q: "Type the Afrikaans word for 'Sleep'", a: "Slaap" },
+            { type: "listen", q: "Type what you hear:", a: "Eet" },
+            { type: "mcq", q: "Translate: 'Work'", options: ["Drink", "Werk", "Eet", "Slaap"], a: "Werk" },
+            { type: "type", q: "Type the Afrikaans word for 'Drink'", a: "Drink" },
+            { type: "mcq", q: "Translate: 'Eat'", options: ["Eet", "Slaap", "Werk", "Drink"], a: "Eet" }
+        ]
+    },
+    {
+        id: "l14", title: "14. Adjectives",
+        vocab: [{af: "Groot", en: "Big"}, {af: "Klein", en: "Small"}, {af: "Mooi", en: "Pretty"}, {af: "Vinnig", en: "Fast"}],
+        questions: [
+            { type: "listen", q: "Type what you hear:", a: "Mooi" },
+            { type: "mcq", q: "Translate: 'Fast'", options: ["Groot", "Vinnig", "Klein", "Mooi"], a: "Vinnig" },
+            { type: "type", q: "Type the Afrikaans word for 'Small'", a: "Klein" },
+            { type: "mcq", q: "Translate: 'Big'", options: ["Klein", "Groot", "Mooi", "Vinnig"], a: "Groot" },
+            { type: "listen", q: "Type what you hear:", a: "Groot" }
+        ]
+    },
+    {
+        id: "l15", title: "15. Feelings",
+        vocab: [{af: "Bly", en: "Happy"}, {af: "Hartseer", en: "Sad"}, {af: "Kwaad", en: "Angry"}, {af: "Moeg", en: "Tired"}],
+        questions: [
+            { type: "type", q: "Type the Afrikaans word for 'Angry'", a: "Kwaad" },
+            { type: "mcq", q: "Translate: 'Happy'", options: ["Hartseer", "Kwaad", "Bly", "Moeg"], a: "Bly" },
+            { type: "listen", q: "Type what you hear:", a: "Moeg" },
+            { type: "type", q: "Type the Afrikaans word for 'Sad'", a: "Hartseer" },
+            { type: "mcq", q: "Translate: 'Tired'", options: ["Moeg", "Bly", "Hartseer", "Kwaad"], a: "Moeg" }
         ]
     }
 ];
@@ -112,10 +174,18 @@ let currentQuestionIndex = 0;
 let sessionScore = 0;
 let lastSpokenWord = "";
 
-const screens = { home: document.getElementById('home-screen'), lesson: document.getElementById('lesson-screen'), result: document.getElementById('result-screen') };
+const screens = { home: document.getElementById('home-screen'), study: document.getElementById('study-screen'), lesson: document.getElementById('lesson-screen'), result: document.getElementById('result-screen') };
 const totalStarsDisplay = document.getElementById('total-stars');
 const lessonMenu = document.getElementById('lesson-menu');
+const vocabList = document.getElementById('vocab-list');
+
+// Interaction elements
 const optionsContainer = document.getElementById('options-container');
+const typingArea = document.getElementById('typing-area');
+const typingInput = document.getElementById('typing-input');
+const checkTypingBtn = document.getElementById('check-typing-btn');
+const largePlayBtn = document.getElementById('large-play-btn');
+
 const questionText = document.getElementById('question-text');
 const feedbackArea = document.getElementById('feedback-area');
 const feedbackText = document.getElementById('feedback-text');
@@ -123,16 +193,16 @@ const nextBtn = document.getElementById('next-btn');
 const replayBtn = document.getElementById('replay-audio-btn');
 const progressFill = document.getElementById('progress-fill');
 
-// Text-to-Speech Function
 function playAudio(text) {
     if ('speechSynthesis' in window) {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'af-ZA'; // Sets language to Afrikaans
-        utterance.rate = 0.9; // Slightly slower for learning
+        utterance.lang = 'af-ZA';
+        utterance.rate = 0.9;
         window.speechSynthesis.speak(utterance);
     }
 }
 
+largePlayBtn.onclick = () => playAudio(lastSpokenWord);
 replayBtn.onclick = () => playAudio(lastSpokenWord);
 
 function updateHeader() { totalStarsDisplay.innerText = userData.stars; }
@@ -153,62 +223,134 @@ function renderMenu() {
         } else {
             btn.innerText = lesson.title;
         }
-        btn.onclick = () => startLesson(lesson);
+        btn.onclick = () => startStudyPhase(lesson);
         lessonMenu.appendChild(btn);
     });
 }
 
-function startLesson(lesson) {
+function startStudyPhase(lesson) {
     currentLessonData = lesson;
+    document.getElementById('study-title').innerText = lesson.title;
+    vocabList.innerHTML = '';
+
+    lesson.vocab.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('vocab-item');
+        div.innerHTML = `
+            <div class="vocab-text">
+                <span class="vocab-afrikaans">${item.af}</span>
+                <span class="vocab-english">${item.en}</span>
+            </div>
+            <button class="play-vocab-btn">🔊</button>
+        `;
+        div.querySelector('.play-vocab-btn').onclick = () => playAudio(item.af);
+        vocabList.appendChild(div);
+    });
+    showScreen('study');
+}
+
+document.getElementById('start-quiz-btn').onclick = () => {
     currentQuestionIndex = 0;
     sessionScore = 0;
     showScreen('lesson');
     loadQuestion();
-}
+};
 
 function loadQuestion() {
     feedbackArea.classList.add('hidden');
     replayBtn.classList.add('hidden');
+    
+    // Hide all input methods initially
+    optionsContainer.classList.add('hidden');
+    typingArea.classList.add('hidden');
+    largePlayBtn.classList.add('hidden');
     optionsContainer.innerHTML = '';
     
     const currentQ = currentLessonData.questions[currentQuestionIndex];
-    questionText.innerText = currentQ.question;
+    questionText.innerText = currentQ.q;
+    lastSpokenWord = currentQ.a; // Store the answer for audio features
     progressFill.style.width = `${(currentQuestionIndex / currentLessonData.questions.length) * 100}%`;
 
-    currentQ.options.forEach(option => {
-        const btn = document.createElement('button');
-        btn.innerText = option;
-        btn.classList.add('option-btn');
-        btn.onclick = () => checkAnswer(btn, option, currentQ.answer);
-        optionsContainer.appendChild(btn);
-    });
+    if (currentQ.type === 'mcq') {
+        optionsContainer.classList.remove('hidden');
+        currentQ.options.forEach(option => {
+            const btn = document.createElement('button');
+            btn.innerText = option;
+            btn.classList.add('option-btn');
+            btn.onclick = () => processAnswer(option, currentQ.a, btn);
+            optionsContainer.appendChild(btn);
+        });
+    } else if (currentQ.type === 'type' || currentQ.type === 'listen') {
+        typingArea.classList.remove('hidden');
+        typingInput.value = '';
+        typingInput.disabled = false;
+        checkTypingBtn.disabled = false;
+        setTimeout(() => typingInput.focus(), 100);
+
+        if (currentQ.type === 'listen') {
+            largePlayBtn.classList.remove('hidden');
+            playAudio(currentQ.a); // Auto-play the word
+        }
+    }
 }
 
-function checkAnswer(clickedBtn, selected, correct) {
+// Handle Typing Submit
+checkTypingBtn.onclick = () => {
+    const userInput = typingInput.value.trim();
+    if (!userInput) return;
+    const currentQ = currentLessonData.questions[currentQuestionIndex];
+    processAnswer(userInput.toLowerCase(), currentQ.a.toLowerCase(), null);
+};
+
+// Allow 'Enter' key to submit typing answer
+typingInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && !checkTypingBtn.disabled) {
+        checkTypingBtn.click();
+    }
+});
+
+// Allow 'Enter' key to click Next when feedback is shown
+document.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && !feedbackArea.classList.contains('hidden')) {
+        nextBtn.click();
+    }
+});
+
+function processAnswer(selected, correct, clickedBtn) {
+    const isCorrect = selected === correct;
+    
+    // Disable inputs
+    checkTypingBtn.disabled = true;
+    typingInput.disabled = true;
     const allBtns = optionsContainer.querySelectorAll('.option-btn');
     allBtns.forEach(b => b.disabled = true);
-    lastSpokenWord = correct;
 
-    if (selected === correct) {
-        clickedBtn.classList.add('correct');
+    if (isCorrect) {
+        if (clickedBtn) clickedBtn.classList.add('correct');
+        else typingInput.style.borderColor = "#48bb78";
+        
         feedbackText.innerText = "Correct! 🎉";
         feedbackText.style.color = "#2f855a";
         sessionScore++;
     } else {
-        clickedBtn.classList.add('wrong');
-        feedbackText.innerText = `Answer: ${correct}`;
+        if (clickedBtn) clickedBtn.classList.add('wrong');
+        else typingInput.style.borderColor = "#f56565";
+        
+        // Show correct capitalization in the UI
+        feedbackText.innerText = `Incorrect. Answer: ${lastSpokenWord}`;
         feedbackText.style.color = "#c53030";
-        allBtns.forEach(b => { if (b.innerText === correct) b.classList.add('correct'); });
+        
+        // Highlight correct button if in MCQ mode
+        allBtns.forEach(b => { if (b.innerText.toLowerCase() === correct) b.classList.add('correct'); });
     }
     
-    // Automatically play the Afrikaans pronunciation
-    playAudio(correct);
-    
+    playAudio(lastSpokenWord);
     replayBtn.classList.remove('hidden');
     feedbackArea.classList.remove('hidden');
 }
 
 nextBtn.onclick = () => {
+    typingInput.style.borderColor = "#cbd5e0"; // Reset input border
     currentQuestionIndex++;
     if (currentQuestionIndex < currentLessonData.questions.length) {
         loadQuestion();
