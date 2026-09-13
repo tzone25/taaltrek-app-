@@ -9,12 +9,16 @@
 </head>
 <body>
     <div class="app-container">
+        <!-- Home Screen -->
         <div id="home-screen" class="screen active">
             <h1>🇿🇦 TaalTrek</h1>
-            <p>Master Afrikaans, one step at a time.</p>
-            <button id="start-btn" class="primary-btn">Start Lesson 1: Basics</button>
+            <p>Choose a lesson to begin:</p>
+            <div id="lesson-menu">
+                <!-- Lesson buttons will be automatically injected here -->
+            </div>
         </div>
 
+        <!-- Lesson Screen -->
         <div id="lesson-screen" class="screen">
             <div class="progress-bar"><div id="progress-fill"></div></div>
             <h2 id="question-text">Question</h2>
@@ -25,9 +29,10 @@
             </div>
         </div>
 
+        <!-- Result Screen -->
         <div id="result-screen" class="screen">
             <h2>Lesson Complete! 🎉</h2>
-            <p>You scored <span id="score-text">0</span>/5</p>
+            <p>You scored <span id="score-text">0</span></p>
             <button id="home-btn" class="primary-btn">Back to Menu</button>
         </div>
     </div>
