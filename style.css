@@ -15,16 +15,31 @@ body {
     height: 100vh;
     background: white;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+#app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #2b6cb0;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .screen {
     display: none;
     padding: 2rem;
-    height: 100%;
+    flex-grow: 1;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
 }
@@ -33,10 +48,18 @@ body {
     display: flex;
 }
 
+#home-screen h2 { margin-top: 0; color: #2d3748; font-size: 1.4rem; }
+
+#lesson-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .primary-btn, .option-btn {
     width: 100%;
     padding: 15px;
-    margin: 10px 0;
     border: none;
     border-radius: 12px;
     font-size: 1.1rem;
@@ -45,17 +68,17 @@ body {
     transition: 0.2s;
 }
 
-.primary-btn {
-    background-color: #dd6b20;
-    color: white;
-}
+.primary-btn { background-color: #dd6b20; color: white; }
+.primary-btn:active { background-color: #c05621; transform: scale(0.98); }
 
-.primary-btn:active { background-color: #c05621; }
+/* Completed Lesson Style */
+.primary-btn.completed { background-color: #48bb78; }
 
 .option-btn {
     background-color: #edf2f7;
     color: #2d3748;
     border: 2px solid #e2e8f0;
+    margin-bottom: 10px;
 }
 
 .option-btn.correct { background-color: #48bb78; color: white; border-color: #48bb78; }
@@ -66,9 +89,7 @@ body {
     height: 10px;
     background: #edf2f7;
     border-radius: 5px;
-    position: absolute;
-    top: 20px;
-    left: 0;
+    margin-bottom: 20px;
 }
 
 #progress-fill {
@@ -79,4 +100,15 @@ body {
     transition: width 0.3s;
 }
 
-.hidden { display: none; }
+#feedback-area {
+    margin-top: 20px;
+    width: 100%;
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+}
+
+#feedback-text { margin-top: 0; }
+
+.hidden { display: none !important; }
