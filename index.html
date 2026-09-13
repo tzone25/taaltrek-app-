@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- Persistent Header -->
         <header id="app-header">
             <div class="logo">🇿🇦 TaalTrek</div>
             <div class="stats">⭐ <span id="total-stars">0</span></div>
@@ -27,14 +26,17 @@
             <h2 id="question-text">Question</h2>
             <div id="options-container"></div>
             <div id="feedback-area" class="hidden">
-                <h3 id="feedback-text"></h3>
+                <div class="feedback-top">
+                    <h3 id="feedback-text"></h3>
+                    <button id="replay-audio-btn" class="icon-btn hidden">🔊 Hear Again</button>
+                </div>
                 <button id="next-btn" class="primary-btn">Next</button>
             </div>
         </div>
 
         <!-- Result Screen -->
         <div id="result-screen" class="screen">
-            <h2>Les Voltooi! (Lesson Complete!) 🎉</h2>
+            <h2>Les Voltooi! 🎉</h2>
             <p>You scored <span id="score-text">0</span> correct.</p>
             <p>⭐ +<span id="earned-stars">0</span> stars added!</p>
             <button id="home-btn" class="primary-btn">Back to Menu</button>
