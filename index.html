@@ -20,11 +20,31 @@
             <div id="lesson-menu"></div>
         </div>
 
-        <!-- Lesson Screen -->
+        <!-- Study Screen -->
+        <div id="study-screen" class="screen">
+            <h2 id="study-title">Lesson Title</h2>
+            <p>Review new words before testing:</p>
+            <div id="vocab-list"></div>
+            <button id="start-quiz-btn" class="primary-btn">Start Quiz</button>
+        </div>
+
+        <!-- Interactive Lesson Screen -->
         <div id="lesson-screen" class="screen">
             <div class="progress-bar"><div id="progress-fill"></div></div>
             <h2 id="question-text">Question</h2>
-            <div id="options-container"></div>
+            
+            <!-- Large Play Button for Listening Exercises -->
+            <button id="large-play-btn" class="hidden">🔊 Hear Word</button>
+
+            <!-- Multiple Choice UI -->
+            <div id="options-container" class="interaction-area"></div>
+            
+            <!-- Typing UI -->
+            <div id="typing-area" class="interaction-area hidden">
+                <input type="text" id="typing-input" placeholder="Type your answer in Afrikaans..." autocomplete="off" autocorrect="off" autocapitalize="none">
+                <button id="check-typing-btn" class="primary-btn">Check Answer</button>
+            </div>
+
             <div id="feedback-area" class="hidden">
                 <div class="feedback-top">
                     <h3 id="feedback-text"></h3>
