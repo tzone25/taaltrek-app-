@@ -7,50 +7,48 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background: linear-gradient(135deg, #007749 0%, #001489 100%); color: #2d3748; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 10px; }
-        .app-container { width: 100%; max-width: 440px; background: #ffffff; border-radius: 24px; box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column; overflow: hidden; min-height: 620px; border: 3px solid #ffb81c; }
-        #app-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: #ffffff; border-bottom: 2px solid #f0f2f5; }
-        .logo { font-weight: 900; font-size: 1.35rem; color: #007749; }
-        .stats { background: #fff8e6; border: 2px solid #ffb81c; padding: 6px 14px; border-radius: 20px; font-weight: 800; color: #b37d00; font-size: 0.95rem; }
-        .screen { display: none; flex-direction: column; padding: 24px; flex: 1; overflow-y: auto; max-height: 650px; background: #fafbfc; }
+        .app-container { width: 100%; max-width: 440px; background: #ffffff; border-radius: 24px; box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column; overflow: hidden; height: 640px; border: 3px solid #ffb81c; position: relative; }
+        #app-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: #ffffff; border-bottom: 2px solid #f0f2f5; flex-shrink: 0; }
+        .logo { font-weight: 900; font-size: 1.25rem; color: #007749; }
+        .stats { background: #fff8e6; border: 2px solid #ffb81c; padding: 5px 12px; border-radius: 20px; font-weight: 800; color: #b37d00; font-size: 0.9rem; }
+        .screen { display: none; flex-direction: column; padding: 20px; flex: 1; overflow: hidden; background: #fafbfc; position: relative; }
         .screen.active { display: flex; }
-        .tab-header { display: flex; background: #e6f4ea; border-radius: 14px; padding: 5px; margin-bottom: 24px; border: 1.5px solid #ceead6; }
-        .tab-btn { flex: 1; padding: 10px; border: none; background: transparent; font-weight: 700; color: #4b6b57; border-radius: 10px; cursor: pointer; font-size: 0.9rem; }
+        .screen-scroll-content { flex: 1; overflow-y: auto; padding-bottom: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .tab-header { display: flex; background: #e6f4ea; border-radius: 14px; padding: 4px; margin-bottom: 16px; border: 1.5px solid #ceead6; flex-shrink: 0; }
+        .tab-btn { flex: 1; padding: 9px; border: none; background: transparent; font-weight: 700; color: #4b6b57; border-radius: 10px; cursor: pointer; font-size: 0.85rem; }
         .tab-btn.active { background: #007749; color: #ffffff; box-shadow: 0 4px 12px rgba(0, 119, 73, 0.25); }
-        .tab-content { display: none; flex-direction: column; gap: 20px; }
+        .tab-content { display: none; flex-direction: column; gap: 14px; }
         .tab-content.active { display: flex; }
-        .level-section { display: flex; flex-direction: column; gap: 12px; margin-bottom: 15px; }
-        .level-section h3 { font-size: 0.9rem; text-transform: uppercase; color: #007749; font-weight: 800; }
-        .lesson-grid { display: flex; flex-direction: column; gap: 12px; }
-        .lesson-card { background: #ffffff; border: 1.5px solid #e2e8f0; border-left: 6px solid #007749; padding: 16px 20px; border-radius: 14px; font-weight: 700; color: #1a202c; cursor: pointer; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 3px 6px rgba(0,0,0,0.03); }
-        .lesson-card:hover { border-color: #007749; transform: translateY(-2px); }
-        .game-card { background: linear-gradient(135deg, #e03c31 0%, #ffb81c 100%); color: white; padding: 22px; border-radius: 18px; cursor: pointer; box-shadow: 0 6px 20px rgba(224, 60, 49, 0.25); }
-        .game-card h4 { margin: 0 0 6px 0; font-size: 1.2rem; font-weight: 800; }
-        .game-card p { margin: 0; font-size: 0.92rem; opacity: 0.95; }
-        .primary-btn { background: #007749; color: white; border: none; padding: 15px; border-radius: 14px; font-weight: 800; font-size: 1rem; cursor: pointer; width: 100%; box-shadow: 0 4px 15px rgba(0, 119, 73, 0.3); }
+        .level-section h3 { font-size: 0.85rem; text-transform: uppercase; color: #007749; font-weight: 800; margin-bottom: 8px; }
+        .lesson-grid { display: flex; flex-direction: column; gap: 10px; }
+        .lesson-card { background: #ffffff; border: 1.5px solid #e2e8f0; border-left: 6px solid #007749; padding: 14px 16px; border-radius: 12px; font-weight: 700; color: #1a202c; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; }
+        .lesson-card:hover { border-color: #007749; }
+        .game-card { background: linear-gradient(135deg, #e03c31 0%, #ffb81c 100%); color: white; padding: 20px; border-radius: 16px; cursor: pointer; }
+        .game-card h4 { margin: 0 0 4px 0; font-size: 1.1rem; font-weight: 800; }
+        .game-card p { margin: 0; font-size: 0.88rem; opacity: 0.95; }
+        .primary-btn { background: #007749; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; cursor: pointer; width: 100%; box-shadow: 0 4px 12px rgba(0, 119, 73, 0.25); flex-shrink: 0; }
         .primary-btn:hover { background: #005c38; }
-        .back-btn { background: #e2e8f0; color: #4a5568; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; cursor: pointer; margin-bottom: 15px; align-self: flex-start; }
-        .back-btn:hover { background: #cbd5e0; }
-        #study-screen h2, #lesson-screen h2, #result-screen h2 { font-size: 1.4rem; color: #001489; margin-bottom: 15px; font-weight: 800; }
-        #vocab-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; max-height: 320px; overflow-y: auto; }
-        .vocab-item { background: #ffffff; border: 1.5px solid #e2e8f0; padding: 14px 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-        .vocab-text { display: flex; flex-direction: column; gap: 2px; }
-        .vocab-afrikaans { font-weight: 800; color: #007749; font-size: 1.05rem; }
-        .vocab-english { font-size: 0.88rem; color: #64748b; }
-        .play-vocab-btn { background: #e6f4ea; border: 1.5px solid #ceead6; color: #007749; padding: 8px 12px; border-radius: 10px; cursor: pointer; font-size: 0.95rem; }
-        .progress-bar { width: 100%; height: 10px; background: #e2e8f0; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
+        .back-btn { background: #edf2f7; color: #4a5568; border: 1.5px solid #cbd5e0; padding: 8px 14px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; cursor: pointer; align-self: flex-start; flex-shrink: 0; }
+        .back-btn:hover { background: #e2e8f0; }
+        .fixed-bottom-bar { padding-top: 10px; background: #fafbfc; border-top: 1px solid #edf2f7; flex-shrink: 0; }
+        #study-screen h2, #lesson-screen h2, #result-screen h2 { font-size: 1.25rem; color: #001489; font-weight: 800; margin: 10px 0; }
+        .vocab-item { background: #ffffff; border: 1.5px solid #e2e8f0; padding: 12px 14px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .vocab-text { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+        .vocab-afrikaans { font-weight: 800; color: #007749; font-size: 1rem; word-break: break-word; }
+        .vocab-english { font-size: 0.85rem; color: #64748b; word-break: break-word; }
+        .play-vocab-btn { background: #e6f4ea; border: 1.5px solid #ceead6; color: #007749; padding: 8px 10px; border-radius: 10px; cursor: pointer; font-size: 0.9rem; flex-shrink: 0; }
+        .progress-bar { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; flex-shrink: 0; margin-bottom: 10px; }
         #progress-fill { height: 100%; background: #007749; width: 0%; transition: width 0.3s ease; }
-        #question-text { font-size: 1.2rem; font-weight: 700; color: #1a202c; margin-bottom: 20px; }
-        .interaction-area { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-        .option-btn { background: #ffffff; border: 2px solid #e2e8f0; padding: 15px 18px; border-radius: 14px; font-size: 1.05rem; font-weight: 700; color: #2d3748; cursor: pointer; text-align: left; }
-        .option-btn:hover { border-color: #007749; background: #f4faf6; }
+        #question-text { font-size: 1.1rem; font-weight: 700; color: #1a202c; margin-bottom: 14px; }
+        .interaction-area { display: flex; flex-direction: column; gap: 10px; }
+        .option-btn { background: #ffffff; border: 2px solid #e2e8f0; padding: 14px 16px; border-radius: 12px; font-size: 1rem; font-weight: 700; color: #2d3748; cursor: pointer; text-align: left; }
         .option-btn.correct { background: #e6f4ea !important; border-color: #007749 !important; color: #004d2f !important; }
         .option-btn.wrong { background: #fdf2f2 !important; border-color: #e03c31 !important; color: #9b1c1c !important; }
-        #typing-input { width: 100%; padding: 15px 18px; border: 2px solid #cbd5e0; border-radius: 14px; font-size: 1.05rem; outline: none; }
-        #typing-input:focus { border-color: #007749; }
-        #feedback-area { background: #f8fafc; border: 1.5px solid #e2e8f0; padding: 16px; border-radius: 14px; margin-top: 10px; }
-        #feedback-text { font-size: 1.1rem; font-weight: 800; }
-        #game-board { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-top: 10px; }
-        .game-tile { background: #ffffff; border: 2px solid #e2e8f0; padding: 16px; border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 1rem; min-height: 85px; display: flex; align-items: center; justify-content: center; text-align: center; color: #1a202c; }
+        #typing-input { width: 100%; padding: 14px 16px; border: 2px solid #cbd5e0; border-radius: 12px; font-size: 1rem; outline: none; }
+        #feedback-area { background: #f8fafc; border: 1.5px solid #e2e8f0; padding: 14px; border-radius: 12px; margin-top: 10px; }
+        #feedback-text { font-size: 1rem; font-weight: 800; }
+        #game-board { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
+        .game-tile { background: #ffffff; border: 2px solid #e2e8f0; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 0.9rem; min-height: 75px; display: flex; align-items: center; justify-content: center; text-align: center; color: #1a202c; }
         .game-tile.selected { background: #e6f4ea; border-color: #007749; color: #004d2f; }
         .game-tile.matched { background: #f4faf6; border-color: #ffb81c; color: #b37d00; opacity: 0.5; pointer-events: none; }
         .hidden { display: none !important; }
@@ -70,31 +68,29 @@
                 <button class="tab-btn" onclick="switchTab('games')">🎮 Games</button>
             </div>
 
-            <div id="lessons-tab" class="tab-content active">
-                <div class="level-section">
-                    <h3>🌱 Beginner Essentials (1 - 30)</h3>
-                    <div class="lesson-grid" id="beginner-grid"></div>
+            <div class="screen-scroll-content">
+                <div id="lessons-tab" class="tab-content active">
+                    <div class="level-section">
+                        <h3>🌱 Beginner Essentials</h3>
+                        <div class="lesson-grid" id="beginner-grid"></div>
+                    </div>
+                    <div class="level-section">
+                        <h3>🌿 Intermediate Life & Culture</h3>
+                        <div class="lesson-grid" id="intermediate-grid"></div>
+                    </div>
                 </div>
-                <div class="level-section">
-                    <h3>🌿 Intermediate Life & Culture (31 - 70)</h3>
-                    <div class="lesson-grid" id="intermediate-grid"></div>
-                </div>
-                <div class="level-section">
-                    <h3>🔥 Advanced Fluency (71 - 100)</h3>
-                    <div class="lesson-grid" id="advanced-grid"></div>
-                </div>
-            </div>
 
-            <div id="flashcards-tab" class="tab-content">
-                <h3 style="color:#001489; font-size:1rem; margin-bottom:5px;">Spaced Repetition Queue</h3>
-                <p style="font-size:0.85rem; color:#64748b; margin-bottom:12px;">Review words you've missed in lessons:</p>
-                <div id="flashcard-queue" style="display:flex; flex-direction:column; gap:10px;"></div>
-            </div>
+                <div id="flashcards-tab" class="tab-content">
+                    <h3 style="color:#001489; font-size:0.95rem; margin-bottom:4px;">Spaced Repetition Queue</h3>
+                    <p style="font-size:0.82rem; color:#64748b; margin-bottom:10px;">Review words you've missed in lessons:</p>
+                    <div id="flashcard-queue" style="display:flex; flex-direction:column; gap:10px;"></div>
+                </div>
 
-            <div id="games-tab" class="tab-content">
-                <div class="game-card" onclick="startMatchingGame()">
-                    <h4>🧩 Matching Pairs</h4>
-                    <p>Match Afrikaans words with their English translations to score bonus XP!</p>
+                <div id="games-tab" class="tab-content">
+                    <div class="game-card" onclick="startMatchingGame()">
+                        <h4>🧩 Matching Pairs</h4>
+                        <p>Match Afrikaans words with their English translations to score bonus XP!</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,25 +98,32 @@
         <div id="study-screen" class="screen">
             <button class="back-btn" onclick="returnHome()">⬅️ Back to Menu</button>
             <h2 id="study-title">Study Vocabulary</h2>
-            <div id="vocab-list"></div>
-            <button class="primary-btn" onclick="startQuiz()">Start Quiz 🚀</button>
+            <div class="screen-scroll-content">
+                <div id="vocab-list"></div>
+            </div>
+            <div class="fixed-bottom-bar">
+                <button class="primary-btn" onclick="startQuiz()">Start Quiz 🚀</button>
+            </div>
         </div>
 
         <div id="lesson-screen" class="screen">
             <button class="back-btn" onclick="returnHome()">⬅️ Back to Menu</button>
+            <div style="height: 10px;"></div>
             <div class="progress-bar"><div id="progress-fill"></div></div>
             <h2 id="question-number">Question 1</h2>
-            <div id="question-text">Translate this word:</div>
-            <div class="interaction-area" id="interaction-area"></div>
-            <div id="feedback-area" class="hidden">
-                <div class="feedback-top"><span id="feedback-text">Correct!</span></div>
-                <button class="primary-btn" onclick="nextQuestion()">Continue</button>
+            <div class="screen-scroll-content">
+                <div id="question-text">Translate this word:</div>
+                <div class="interaction-area" id="interaction-area"></div>
+                <div id="feedback-area" class="hidden">
+                    <div class="feedback-top"><span id="feedback-text">Correct!</span></div>
+                    <button class="primary-btn" onclick="nextQuestion()" style="margin-top:10px;">Continue</button>
+                </div>
             </div>
         </div>
 
         <div id="result-screen" class="screen" style="text-align: center; justify-content: center;">
             <h2>🎉 Lesson Completed!</h2>
-            <p id="result-stats" style="margin-bottom: 20px; font-size: 1.1rem; font-weight: 700; color: #007749;">You earned XP!</p>
+            <p id="result-stats" style="margin-bottom: 20px; font-size: 1.05rem; font-weight: 700; color: #007749;">You earned XP!</p>
             <button class="primary-btn" onclick="returnHome()">Back to Dashboard</button>
         </div>
     </div>
@@ -128,55 +131,108 @@
     <script>
         const allLessons = [
             { 
-                id: "l1", level: "beginner", title: "1. Beginner: Greetings & Introductions", 
+                id: "l1", level: "beginner", title: "1. Greetings & Introductions", 
                 dialogue: [
                     { af: "Hallo, goeiemôre! Hoe gaan dit?", en: "Hello, good morning! How are you?", speaker: "Jan" },
                     { af: "Baie goed, dankie. En met jou?", en: "Very well, thank you. And with you?", speaker: "Sanna" }
                 ],
-                vocab: [{af: "Goeiemôre", en: "Good morning"}, {af: "Hoe gaan dit?", en: "How are you?"}, {af: "Baie goed", en: "Very well"}], 
+                vocab: [
+                    { af: "Goeiemôre", en: "Good morning" }, 
+                    { af: "Hoe gaan dit?", en: "How are you?" }, 
+                    { af: "Baie goed", en: "Very well" },
+                    { af: "Dankie", en: "Thank you" }
+                ], 
                 questions: [
-                    { type: "mcq", q: "Translate: 'Goeiemôre'", options: ["Good morning", "Good night", "Goodbye", "Hello"], a: "Good morning" }, 
-                    { type: "type", q: "Type the Afrikaans for 'Thank you'", a: "Dankie" }
+                    { type: "mcq", q: "Translate: 'Goeiemôre'", options: ["Good morning", "Good night", "Goodbye", "Hello"], a: "Good morning" },
+                    { type: "mcq", q: "What does 'Hoe gaan dit?' mean?", options: ["How are you?", "Who are you?", "Where are you?", "How old are you?"], a: "How are you?" },
+                    { type: "type", q: "Type the Afrikaans word for 'Thank you'", a: "Dankie" }
                 ] 
             },
             { 
-                id: "l2", level: "beginner", title: "2. Beginner: Essential Courtesies", 
+                id: "l2", level: "beginner", title: "2. Essential Courtesies & Politeness", 
                 dialogue: [
                     { af: "Asseblief, kan ek 'n koppie koffie kry?", en: "Please, can I get a cup of coffee?", speaker: "Klant" },
                     { af: "Natuurlik, dadelik!", en: "Of course, right away!", speaker: "Kelner" }
                 ],
-                vocab: [{af: "Asseblief", en: "Please"}, {af: "Koffie", en: "Coffee"}, {af: "Natuurlik", en: "Of course"}], 
+                vocab: [
+                    { af: "Asseblief", en: "Please / Here you go" }, 
+                    { af: "Koffie", en: "Coffee" }, 
+                    { af: "Natuurlik", en: "Of course" },
+                    { af: "Jammer", en: "Sorry" }
+                ], 
                 questions: [
-                    { type: "mcq", q: "What does 'Asseblief' mean?", options: ["Please", "Thank you", "Sorry", "Yes"], a: "Please" }, 
-                    { type: "type", q: "Type the Afrikaans word for 'Coffee'", a: "Koffie" }
+                    { type: "mcq", q: "What does 'Asseblief' mean?", options: ["Please", "Thank you", "Sorry", "Yes"], a: "Please" },
+                    { type: "mcq", q: "Translate: 'Natuurlik'", options: ["Of course", "Never", "Maybe", "Thanks"], a: "Of course" },
+                    { type: "type", q: "Type the Afrikaans word for 'Sorry'", a: "Jammer" }
+                ] 
+            },
+            { 
+                id: "l3", level: "beginner", title: "3. Numbers 1 to 10", 
+                dialogue: [
+                    { af: "Hoeveel kos dit? Dit kos tien rand.", en: "How much does this cost? It costs ten rand.", speaker: "Koper" }
+                ],
+                vocab: [
+                    { af: "Een, twee, drie", en: "One, two, three" }, 
+                    { af: "Vier, vyf, ses", en: "Four, five, six" }, 
+                    { af: "Sewe, agt, nege, tien", en: "Seven, eight, nine, ten" }
+                ], 
+                questions: [
+                    { type: "mcq", q: "What is 'Een' in English?", options: ["One", "Eight", "Ten", "Three"], a: "One" },
+                    { type: "type", q: "Type the Afrikaans word for 'Ten'", a: "Tien" }
+                ] 
+            },
+            { 
+                id: "l4", level: "beginner", title: "4. Food & Restaurant Ordering", 
+                dialogue: [
+                    { af: "Ek wil graag 'n boereworsrol en water bestel.", en: "I would like to order a boerewors roll and water.", speaker: "Tois" },
+                    { af: "Wil jy dit met uie hê?", en: "Would you like it with onions?", speaker: "Verkoper" }
+                ],
+                vocab: [
+                    { af: "Water", en: "Water" }, 
+                    { af: "Kos", en: "Food" }, 
+                    { af: "Eet", en: "Eat" },
+                    { af: "Drink", en: "Drink" }
+                ], 
+                questions: [
+                    { type: "mcq", q: "What does 'Water' mean?", options: ["Water", "Wine", "Milk", "Beer"], a: "Water" },
+                    { type: "type", q: "Type the Afrikaans word for 'Food'", a: "Kos" }
+                ] 
+            },
+            { 
+                id: "l5", level: "intermediate", title: "5. Asking Directions & Travel", 
+                dialogue: [
+                    { af: "Waar is die naaste strand, asseblief?", en: "Where is the nearest beach, please?", speaker: "Toeris" },
+                    { af: "Draai regs by die volgende verkeerslig.", en: "Turn right at the next traffic light.", speaker: "Inwoner" }
+                ],
+                vocab: [
+                    { af: "Waar", en: "Where" }, 
+                    { af: "Regs", en: "Right" }, 
+                    { af: "Links", en: "Left" },
+                    { af: "Strate", en: "Streets" }
+                ], 
+                questions: [
+                    { type: "mcq", q: "What does 'Waar' mean?", options: ["Where", "When", "Who", "Why"], a: "Where" },
+                    { type: "type", q: "Type the Afrikaans word for 'Right'", a: "Regs" }
+                ] 
+            },
+            { 
+                id: "l6", level: "intermediate", title: "6. Weather & Outdoor Life", 
+                dialogue: [
+                    { af: "Dit is vandag baie warm in Kaapstad!", en: "It is very hot today in Cape Town!", speaker: "Mia" },
+                    { af: "Ja, maar môre reën dit sekerlik.", en: "Yes, but tomorrow it will surely rain.", speaker: "Liam" }
+                ],
+                vocab: [
+                    { af: "Warm", en: "Hot" }, 
+                    { af: "Koud", en: "Cold" }, 
+                    { af: "Reën", en: "Rain" },
+                    { af: "Son", en: "Sun" }
+                ], 
+                questions: [
+                    { type: "mcq", q: "What does 'Warm' mean?", options: ["Hot", "Cold", "Windy", "Dry"], a: "Hot" },
+                    { type: "type", q: "Type the Afrikaans word for 'Rain'", a: "Reën" }
                 ] 
             }
         ];
-
-        const titlesList = [
-            "Numbers & Counting", "Asking Directions", "Food & Ordering", "Family Members", "Weather & Climate",
-            "Time & Days", "Shopping & Money", "Colors & Shapes", "Travel & Hotels", "Emotions & Feelings"
-        ];
-
-        for (let i = 3; i <= 100; i++) {
-            let tTitle = titlesList[(i - 3) % titlesList.length];
-            allLessons.push({
-                id: `l${i}`,
-                level: i <= 30 ? "beginner" : i <= 70 ? "intermediate" : "advanced",
-                title: `${i}. Afrikaans Module: ${tTitle} (${i})`,
-                dialogue: [
-                    { af: `Praktiese sin vir les ${i} in Afrikaans.`, en: `Practical sentence for lesson ${i} in English.`, speaker: "Spreker" }
-                ],
-                vocab: [
-                    { af: `Woord ${i}-A`, en: `Translation A` },
-                    { af: `Woord ${i}-B`, en: `Translation B` }
-                ],
-                questions: [
-                    { type: "mcq", q: `Select the translation for Word ${i}-A`, options: ["Translation A", "Wrong Choice 1", "Wrong Choice 2", "Wrong Choice 3"], a: "Translation A" },
-                    { type: "type", q: `Type 'Translation A'`, a: "Translation A" }
-                ]
-            });
-        }
 
         let userData = JSON.parse(localStorage.getItem('taaltrek_data')) || { stars: 24, completed: [], weakWords: [] };
         let currentLessonData = null;
@@ -193,20 +249,18 @@
         function renderDashboardGrids() {
             const bGrid = document.getElementById('beginner-grid');
             const iGrid = document.getElementById('intermediate-grid');
-            const aGrid = document.getElementById('advanced-grid');
-            if (!bGrid || !iGrid || !aGrid) return;
+            if (!bGrid || !iGrid) return;
             
-            bGrid.innerHTML = ''; iGrid.innerHTML = ''; aGrid.innerHTML = '';
+            bGrid.innerHTML = ''; iGrid.innerHTML = '';
 
             allLessons.forEach(l => {
                 const card = document.createElement('div');
                 card.classList.add('lesson-card');
                 card.innerHTML = `<span>${l.title}</span><span>➡️</span>`;
-                card.onclick = () => startLesson(l.id.replace('l', ''));
+                card.onclick = () => startLesson(l.id);
                 
                 if (l.level === 'beginner') bGrid.appendChild(card);
-                else if (l.level === 'intermediate') iGrid.appendChild(card);
-                else aGrid.appendChild(card);
+                else iGrid.appendChild(card);
             });
         }
 
@@ -247,8 +301,8 @@
             }
         };
 
-        window.startLesson = function(lessonNum) {
-            const lesson = allLessons.find(l => l.id === `l${lessonNum}`);
+        window.startLesson = function(lessonId) {
+            const lesson = allLessons.find(l => l.id === lessonId);
             if (!lesson) return;
             currentLessonData = lesson;
             document.getElementById('study-title').innerText = lesson.title;
@@ -259,6 +313,7 @@
                 const dh = document.createElement('h3');
                 dh.innerText = "💬 Native Dialogue";
                 dh.style.color = "#001489";
+                dh.style.fontSize = "0.9rem";
                 vList.appendChild(dh);
 
                 lesson.dialogue.forEach(line => {
@@ -267,11 +322,11 @@
                     div.style.background = "#f0f4f8";
                     div.innerHTML = `
                         <div class="vocab-text">
-                            <span style="font-size:0.7rem; font-weight:bold;">${line.speaker}:</span>
+                            <span style="font-size:0.7rem; font-weight:bold; color:#4a5568;">${line.speaker}:</span>
                             <span class="vocab-afrikaans">${line.af}</span>
                             <span class="vocab-english">${line.en}</span>
                         </div>
-                        <button class="play-vocab-btn" onclick="playAudio('${line.af}', false)">🔊</button>
+                        <button class="play-vocab-btn" onclick="playAudio('${line.af.replace(/'/g, "\\'")}', false)">🔊</button>
                     `;
                     vList.appendChild(div);
                 });
@@ -280,7 +335,8 @@
             const vh = document.createElement('h3');
             vh.innerText = "📚 Vocabulary";
             vh.style.color = "#007749";
-            vh.style.marginTop = "10px";
+            vh.style.fontSize = "0.9rem";
+            vh.style.marginTop = "6px";
             vList.appendChild(vh);
 
             lesson.vocab.forEach(item => {
@@ -291,7 +347,7 @@
                         <span class="vocab-afrikaans">${item.af}</span>
                         <span class="vocab-english">${item.en}</span>
                     </div>
-                    <button class="play-vocab-btn" onclick="playAudio('${item.af}', false)">🔊</button>
+                    <button class="play-vocab-btn" onclick="playAudio('${item.af.replace(/'/g, "\\'")}', false)">🔊</button>
                 `;
                 vList.appendChild(div);
             });
@@ -393,7 +449,7 @@
         function loadSmartFlashcards() {
             const container = document.getElementById('flashcard-queue');
             if (!container) return;
-            container.innerHTML = `<p style="text-align:center; color:#718096;">Review items will appear here.</p>`;
+            container.innerHTML = `<p style="text-align:center; color:#718096; font-size:0.9rem;">Review items will appear here.</p>`;
         }
 
         window.startMatchingGame = function() {
