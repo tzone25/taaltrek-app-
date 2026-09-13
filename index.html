@@ -28,6 +28,8 @@
         .game-card p { margin: 0; font-size: 0.92rem; opacity: 0.95; }
         .primary-btn { background: #007749; color: white; border: none; padding: 15px; border-radius: 14px; font-weight: 800; font-size: 1rem; cursor: pointer; width: 100%; box-shadow: 0 4px 15px rgba(0, 119, 73, 0.3); }
         .primary-btn:hover { background: #005c38; }
+        .back-btn { background: #e2e8f0; color: #4a5568; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; cursor: pointer; margin-bottom: 15px; align-self: flex-start; }
+        .back-btn:hover { background: #cbd5e0; }
         #study-screen h2, #lesson-screen h2, #result-screen h2 { font-size: 1.4rem; color: #001489; margin-bottom: 15px; font-weight: 800; }
         #vocab-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; max-height: 320px; overflow-y: auto; }
         .vocab-item { background: #ffffff; border: 1.5px solid #e2e8f0; padding: 14px 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
@@ -98,12 +100,14 @@
         </div>
 
         <div id="study-screen" class="screen">
+            <button class="back-btn" onclick="returnHome()">⬅️ Back to Menu</button>
             <h2 id="study-title">Study Vocabulary</h2>
             <div id="vocab-list"></div>
             <button class="primary-btn" onclick="startQuiz()">Start Quiz 🚀</button>
         </div>
 
         <div id="lesson-screen" class="screen">
+            <button class="back-btn" onclick="returnHome()">⬅️ Back to Menu</button>
             <div class="progress-bar"><div id="progress-fill"></div></div>
             <h2 id="question-number">Question 1</h2>
             <div id="question-text">Translate this word:</div>
@@ -122,7 +126,6 @@
     </div>
 
     <script>
-        // Self-contained script to guarantee rendering on GitHub Pages
         const allLessons = [
             { 
                 id: "l1", level: "beginner", title: "1. Beginner: Greetings & Introductions", 
@@ -352,7 +355,7 @@
 
             if (isCorrect) {
                 if (btn) btn.classList.add('correct');
-                if (input) input.classList.add('custom-input-correct');
+                if (input) input.classList.add('correct');
                 document.getElementById('feedback-text').innerText = "Correct! 🎉";
                 document.getElementById('feedback-text').style.color = "#007749";
                 sessionScore++;
@@ -432,7 +435,6 @@
             });
         };
 
-        // Initialize App on load
         updateHeader();
         renderDashboardGrids();
     </script>
